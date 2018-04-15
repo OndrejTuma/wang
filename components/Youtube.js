@@ -4,7 +4,6 @@ import YouTube from 'react-youtube'
 export default class Youtube extends Component {
     _ytReady = event => {
         this.youtube = event.target
-console.log(this.youtube);
 
         //this.youtube.playVideo()
     }
