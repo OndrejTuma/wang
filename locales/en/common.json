@@ -1,3 +1,5 @@
 {
-  "integrates_react-i18next": "This example integrates react-i18next for simple internationalization."
+  "home": "Home",
+  "buy": "Shop at Footshop",
+  "collection": "Check collection"
 }

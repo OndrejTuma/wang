@@ -1,0 +1,32 @@
+.Controls {
+    color: red;
+    font-size: .9em;
+    height: 80%;
+    left: 10%;
+    position: absolute;
+    text-transform: uppercase;
+    top: 10%;
+    width: 80%;
+    z-index: 9;
+
+    .buy {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .collection {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+    .home {
+        left: 0;
+        position: absolute;
+        top: 0;
+    }
+    .time {
+        bottom: 0;
+        left: 0;
+        position: absolute;
+    }
+}
