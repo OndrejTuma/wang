@@ -2,23 +2,9 @@ import React from 'react'
 
 import Youtube from './Youtube'
 
-export default () => <div className={'slide1'} style={{
-    bottom: 0,
-    left: 0,
-    position: 'fixed',
-    right: 0,
-    top: 0,
-    zIndex: 1,
-}}>
+export default () => <div className={'Slide Slide1'}>
     <h2>Slide 1</h2>
-    <div style={{
-        bottom: 0,
-        left: 0,
-        position: 'fixed',
-        right: 0,
-        top: 0,
-        zIndex: -1,
-    }}>
+    <div className={`youtube`}>
         <Youtube/>
     </div>
 </div>

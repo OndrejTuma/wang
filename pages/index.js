@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import {Events} from 'react-scroll'
 
 import {withI18next} from '../lib/withI18next'
 import css from '../styles/index.scss'
@@ -20,8 +21,8 @@ export default withI18next(['home', 'common'])(({t, initialI18nStore}) => (
             <style type="text/css">{css}</style>
         </Head>
         <SocialWrapper/>
-        <h1>{t('home:welcome')}</h1>
         <Controls/>
+
         <Slide1/>
         <Slide2/>
         <Slide3/>

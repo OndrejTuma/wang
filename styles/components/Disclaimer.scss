@@ -1,0 +1,18 @@
+.Disclaimer {
+    color: #fff;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    transform: rotate(-90deg) translate(0, 100%);
+    transform-origin: 0 100%;
+    z-index: 9;
+
+    p {
+        margin: 0;
+        padding: 10px 20px;
+    }
+    svg {
+        margin: 0 5px -5px 5px;
+        fill: #cf181f;
+    }
+}
