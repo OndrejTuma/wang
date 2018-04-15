@@ -1,12 +1,9 @@
 import React, {Component} from 'react'
 import {Events, scrollSpy} from 'react-scroll'
+import {inject, observer} from 'mobx-react'
 
+@inject('store') @observer
 class Scroller extends Component {
-    state = {
-        active: 0,
-        sliding: false,
-    }
-
     get slidesCount() {
         const {children} = this.props
 
@@ -46,7 +43,7 @@ class Scroller extends Component {
             if ([35, 36].indexOf(keyCode) >= 0) {
                 let slide = keyCode === 35 ? this.slidesCount - 1 : 0
 
-                this.setState({active: slide})
+                this.props.store.setSlide(slide)
             }
         }
     }
@@ -54,15 +51,15 @@ class Scroller extends Component {
         e.preventDefault()
         let scrollDown = e.deltaY > 0
 
-        if (!this.state.sliding) {
+        if (!this.props.store.sliding) {
             scrollDown ? this.next() : this.prev()
         }
     }
     _handleScrollEnd = () => {
-        let { sliding } = this.state
+        let { sliding } = this.props.store
 
         if (sliding) {
-            this.setState({sliding: false})
+            this.props.store.setSliding(false)
         }
 
         this._activateScrollListening()
@@ -86,35 +83,29 @@ class Scroller extends Component {
         this.lastTouchY = touch.clientY
     }
     _setActive(slide) {
-        if (slide === this.state.active) {
+        const {active} = this.props.store
+
+        if (slide === active) {
             return
         }
 
-        this.setState({sliding: true})
-
-        setTimeout(() => {
-            this.setState({
-                active: slide,
-                sliding: false,
-            })
-        }, 1000)
+        this.props.store.setSlide(slide)
     }
 
     next() {
-        const {active} = this.state
+        const {active} = this.props.store
         const slides = this.slidesCount - 1
 
         this._setActive(active < slides ? active + 1 : slides)
     }
     prev() {
-        const {active} = this.state
+        const {active} = this.props.store
 
         this._setActive(active > 0 ? active - 1 : 0)
     }
 
     render() {
-        const {children} = this.props
-        const {active, sliding} = this.state
+        const {children, store: {active, sliding}} = this.props
 
         return <div className={`Scroller`}>
             {children && children.filter((child, i) => active === i)}
