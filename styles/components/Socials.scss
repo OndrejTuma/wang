@@ -1,6 +1,23 @@
 .Socials {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 9;
+
+    a {
+        background: #fff;
+        border-radius: 50%;
+        display: block;
+        height: 30px;
+        text-align: center;
+        padding-top: 7px;
+        width: 30px;
+    }
+    li {
+        margin-bottom: 5px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 }

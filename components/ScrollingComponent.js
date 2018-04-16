@@ -1,35 +1,13 @@
 import React, {Component} from 'react'
-import {Events, scroller, scrollSpy} from 'react-scroll'
-import {inject, observer} from 'mobx-react'
+import {Events, scrollSpy} from 'react-scroll'
+import {inject} from 'mobx-react'
 
-@inject('store') @observer
-class Scroller extends Component {
-    scrollerSettings = {
-        duration: 1000,
-        ignoreCancelEvents: true,
-        smooth: true,
-    }
-    classPrefix = 'Scroller-slide-'
-
+@inject('store')
+class ScrollingComponent extends Component {
     get slidesCount() {
         const {children} = this.props
 
         return children ? children.length : 0
-    }
-
-    componentDidMount() {
-        Events.scrollEvent.register('begin', this._handleScrollStart)
-        Events.scrollEvent.register('end', this._handleScrollEnd)
-
-        scrollSpy.update()
-
-        this._activateScrollListening()
-    }
-    componentWillUnmount() {
-        Events.scrollEvent.remove('begin')
-        Events.scrollEvent.remove('end')
-
-        this._deactivateScrollListening()
     }
 
     _activateScrollListening() {
@@ -38,6 +16,20 @@ class Scroller extends Component {
             window.addEventListener('wheel', this._handleScroll)
             window.addEventListener('keydown', this._handleKeyDown)
         }
+    }
+    _componentMounted() {
+        Events.scrollEvent.register('begin', this._handleScrollStart)
+        Events.scrollEvent.register('end', this._handleScrollEnd)
+
+        scrollSpy.update()
+
+        this._activateScrollListening()
+    }
+    _componentUnmounted() {
+        Events.scrollEvent.remove('begin')
+        Events.scrollEvent.remove('end')
+
+        this._deactivateScrollListening()
     }
     _deactivateScrollListening() {
         if (typeof window !== 'undefined') {
@@ -102,9 +94,9 @@ class Scroller extends Component {
      */
     _setActive(slide) {
         const {store: {active}} = this.props
+console.log('_setActive', slide, active);
 
         if (slide === active) {
-
             return
         }
 
@@ -128,31 +120,6 @@ class Scroller extends Component {
 
         this._setActive(active > 0 ? active - 1 : 0)
     }
-
-    /**
-     * Scrolls to given slide on client
-     * @param {int} slide
-     * @param {Object.<string, string>} scrollerSettings
-     * @private
-     */
-    slideTo(slide, scrollerSettings = {}) {
-        scroller.scrollTo(
-            this.classPrefix + slide,
-            Object.assign(this.scrollerSettings, scrollerSettings)
-        )
-    }
-
-    render() {
-        const {children, store: {active}} = this.props
-
-        if (typeof window != 'undefined') {
-            this.slideTo(active)
-        }
-
-        return <div className={`Scroller`}>
-            {children.map((child, i) => <div key={i} id={this.classPrefix + i}>{child}</div>)}
-        </div>
-    }
 }
 
-export default Scroller
+export default ScrollingComponent

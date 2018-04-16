@@ -1,3 +1,51 @@
 .Slide2 {
+    overflow: hidden;
+    width: 100vw;
 
+    .bg {
+        @include background('aw.jpg', 50% 50% / cover no-repeat);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+    }
+    .content {
+        background-color: rgba($white, .8);
+        color: $black;
+    }
+    .slides {
+
+    }
+    .controls {
+        color: $red;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        right: 0;
+
+        p {
+            cursor: pointer;
+        }
+        svg {
+            fill: $red;
+            vertical-align: middle;
+        }
+
+        .disabled {
+            color: $gray;
+            cursor: default;
+
+            svg {
+                fill: $gray;
+            }
+        }
+        .left {
+            float: left;
+        }
+        .right {
+            float: right;
+        }
+    }
 }

@@ -1,24 +1,15 @@
 import {action, observable} from 'mobx'
 
 export class Store {
-	@observable active = 0
-	@observable sliding = false
+	@observable active = 1
+	@observable verticalActive = 0
 
 	@action
 	setActive(slide) {
 		this.active = slide
 	}
 	@action
-	setSliding(sliding = true) {
-		this.sliding = sliding
-	}
-	@action
-	setSlide(slide) {
-        this.sliding = true
-
-        setTimeout(() => {
-            this.sliding = false
-            this.active = slide
-        }, 1000)
+	setVerticalActive(slide) {
+		this.verticalActive = slide
 	}
 }

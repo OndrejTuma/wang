@@ -2,4 +2,13 @@
     height: 100vh;
     position: relative;
     z-index: 1;
+
+    .content {
+        @include dim(76%, 300px);
+        left: 12%;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        transform: translate(0, -50%);
+    }
 }

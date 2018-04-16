@@ -2,10 +2,13 @@ import React, {Component} from 'react'
 import YouTube from 'react-youtube'
 
 export default class Youtube extends Component {
-    _ytReady = event => {
-        this.youtube = event.target
+    _playerReady = e => {
+        this.youtube = e.target
 
-        //this.youtube.playVideo()
+        this.youtube.mute()
+    }
+    _playerEnded = e => {
+        e.target.playVideo()
     }
 
     render() {
@@ -24,9 +27,9 @@ export default class Youtube extends Component {
                     showinfo: 0,
                 },
             }}
-            onReady={this._ytReady}
+            onReady={this._playerReady}
+            onEnd={this._playerEnded}
             /*
-            onEnd={this._ytEnded}
             onStateChange={this._ytStateChange}
             */
         />
