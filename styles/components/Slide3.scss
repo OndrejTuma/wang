@@ -1,6 +1,4 @@
 .Slide3 {
-    @include background('collection.jpg', 50% 50% / cover no-repeat);
-
     &.expanded {
         z-index: 9;
     }

@@ -4,6 +4,8 @@ import {translate} from 'react-i18next'
 import {TweenLite} from 'gsap'
 import classNames from 'classnames'
 
+import GlitchBg from './GlitchBg'
+
 import Logo from '../static/svg/logo-wang.svg'
 
 @inject('store') @observer
@@ -97,6 +99,7 @@ class Slide3 extends Component {
         }
 
         return <div className={classNames('Slide Slide3', {expanded: show_collection})}>
+            <GlitchBg/>
             <div className={`content`} id={this.content_id}>
                 {show_collection
                     ? <div className={`collection`}>

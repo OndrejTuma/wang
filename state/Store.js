@@ -1,7 +1,7 @@
 import {action, observable} from 'mobx'
 
 export class Store {
-	@observable active = 2
+	@observable active = 0
 	@observable horizontalActive = 0
 	@observable show_collection = false
 

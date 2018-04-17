@@ -2,11 +2,6 @@
     overflow: hidden;
     width: 100vw;
 
-    .slide-0 .bg { @include background-image('aw.jpg'); }
-    .slide-1 .bg { @include background-image('aw.jpg'); }
-    .slide-2 .bg { @include background-image('aw.jpg'); }
-
-
     .controls {
         color: $red;
         bottom: 0;

@@ -7,6 +7,7 @@ import ArrowLeft from '../static/svg/arrow-left.svg'
 import ArrowRight from '../static/svg/arrow-right.svg'
 
 import HorizontalSlider from './HorizontalSlider'
+import GlitchBg from './GlitchBg'
 
 @inject('store') @observer
 class HorizontalSliderWithControls extends Component {
@@ -22,7 +23,7 @@ class HorizontalSliderWithControls extends Component {
                 const totalSlides = this._getTwoDigitsFormat(children.length)
 
                 return <div key={i} className={`slide-${i}`}>
-                    <div className={`bg`}></div>
+                    <GlitchBg/>
                     <div className={`content`}>
                         <p className={`annotation`}>{`${currentSlide} - ${totalSlides}`}</p>
                         {slide}
