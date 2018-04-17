@@ -35,5 +35,11 @@
     .time {
         bottom: $distance;
         left: $distance;
+
+        i {
+            font-style: normal;
+            margin-top: 1.4em;
+            display: block;
+        }
     }
 }

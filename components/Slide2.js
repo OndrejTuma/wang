@@ -1,27 +1,25 @@
 import React, {Component} from 'react'
 import {translate} from 'react-i18next'
 
-
 import HorizontalSliderWithControls from './HorizontalSliderWithControls'
 
 class Slide2 extends Component {
     render() {
+        const {t} = this.props
+
         return <div className={'Slide Slide2'}>
             <HorizontalSliderWithControls>
-                <div>
-                    <h2>
-                        <span className={`glitch`} data-text="Alexander Wang">Alexander Wang</span>
-                    </h2>
-                </div>
-                <div>
-                    <h2>
-                        <span className={`glitch`} data-text="Lama Su">Lama Su</span>
-                    </h2>
-                </div>
-                <div>
-                    <h2>Marky!</h2>
-                    <p>Ještě to neni!</p>
-                </div>
+                {[0, 1].map(slide => {
+                    const heading = t(`slide${slide}.heading`)
+                    const text = t(`slide${slide}.text`)
+
+                    return <div key={slide}>
+                        <h2>
+                            <span className={`glitch`} data-text={heading}>{heading}</span>
+                        </h2>
+                        <p>{text}</p>
+                    </div>
+                })}
             </HorizontalSliderWithControls>
         </div>
     }

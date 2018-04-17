@@ -15,7 +15,7 @@ import SocialWrapper from '../components/SocialWrapper'
 import Disclaimer from '../components/Disclaimer'
 import Controls from '../components/Controls'
 
-export default withI18next(['home', 'common', 'horizontalSlider', 'slide3'])(({t, initialI18nStore}) =>
+export default withI18next(['home', 'common', 'horizontalSlider', 'slide2', 'slide3'])(({t, initialI18nStore}) =>
     <Provider store={new Store()}>
         <div>
             <Head>

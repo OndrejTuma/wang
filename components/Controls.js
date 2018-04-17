@@ -35,7 +35,7 @@ class Controls extends Component {
             </div>
             <div className={'time'}>
                 <Timer/>
-                <p>A AW 004 S18</p>
+                <i>A AW 004 S18</i>
             </div>
         </div>
     }
