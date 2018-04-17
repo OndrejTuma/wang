@@ -33,6 +33,8 @@
 @import "_libs/bootstrap";
 
 // layout styles
+@import "layout/headings";
+
 
 // custom page styles
 @import "pages/homepage";
@@ -53,3 +55,6 @@
 @import "_common/globals";
 @import "_common/_colors";
 @import "_common/_presets";
+
+// glitch
+@import "glitch";

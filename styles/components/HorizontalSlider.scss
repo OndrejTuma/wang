@@ -7,9 +7,6 @@
     .slide-2 .bg { @include background-image('aw.jpg'); }
 
 
-    .annotation {
-        color: #a3a3a5;
-    }
     .controls {
         color: $red;
         bottom: 0;

@@ -15,7 +15,7 @@ import SocialWrapper from '../components/SocialWrapper'
 import Disclaimer from '../components/Disclaimer'
 import Controls from '../components/Controls'
 
-export default withI18next(['home', 'common', 'horizontalSlider'])(({t, initialI18nStore}) =>
+export default withI18next(['home', 'common', 'horizontalSlider', 'slide3'])(({t, initialI18nStore}) =>
     <Provider store={new Store()}>
         <div>
             <Head>
@@ -23,6 +23,7 @@ export default withI18next(['home', 'common', 'horizontalSlider'])(({t, initialI
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 <link rel="stylesheet" href="https://use.typekit.net/sua1tqu.css"/>
                 <style type="text/css">{css}</style>
+                <link rel="stylesheet" href="https://use.typekit.net/mqa6irl.css"/>
             </Head>
             <SocialWrapper/>
             <Controls/>

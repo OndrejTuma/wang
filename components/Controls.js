@@ -9,6 +9,13 @@ import Timer from './Timer'
 
 @inject('store') @observer
 class Controls extends Component {
+    _collectionClick = e => {
+        e.preventDefault()
+
+        this.props.store.setActive(2)
+        this.props.store.showCollection()
+    }
+
     render() {
         const { t } = this.props
 
@@ -17,10 +24,14 @@ class Controls extends Component {
                <Dot width={15} height={15}/> {t('home')}
             </div>
             <div className={'buy'}>
-                <Triangle width={15} height={15}/> {t('buy')}
+                <a href={t('buyLink')}>
+                    <Triangle width={15} height={15}/> {t('buy')}
+                </a>
             </div>
             <div className={'collection'}>
-                <Triangle width={15} height={15}/> {t('collection')}
+                <a href="#collection" onClick={this._collectionClick}>
+                    <Triangle width={15} height={15}/> {t('collection')}
+                </a>
             </div>
             <div className={'time'}>
                 <Timer/>

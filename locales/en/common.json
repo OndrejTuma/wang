@@ -1,5 +1,6 @@
 {
   "home": "Home",
   "buy": "Shop at Footshop",
-  "collection": "Check collection"
+  "collection": "Check collection",
+  "buyLink": "https://www.footshop.com"
 }

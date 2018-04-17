@@ -1,3 +1,48 @@
 .Slide3 {
+    @include background('collection.jpg', 50% 50% / cover no-repeat);
 
+    &.expanded {
+        z-index: 9;
+    }
+
+    .annotation {
+        margin: 0;
+        padding: 15px 0;
+    }
+    .collection {
+        max-height: 60vh;
+
+        li {
+            display: inline-block;
+
+            img {
+                max-height: 300px;
+                width: auto;
+            }
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .cta {
+            margin-top: 0;
+        }
+    }
+    .content {
+        background-color: rgba($white, .8);
+        color: $black;
+    }
+    .cta {
+        margin-top: 50px;
+        padding-bottom: 40px; //bigger to hotfix/compensate for smaller container height due to not loaded fonts
+
+        a {
+            color: $red;
+            text-decoration: none;
+        }
+    }
 }
