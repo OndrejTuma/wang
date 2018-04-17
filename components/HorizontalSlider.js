@@ -3,8 +3,9 @@ import {inject, observer} from 'mobx-react'
 import {TweenLite} from 'gsap'
 
 @inject('store') @observer
-class VerticalSlider extends Component {
-    classPrefix = 'VerticalScroller-slide-'
+class HorizontalSlider extends Component {
+    id = 'HorizontalSlider'
+    classPrefix = 'HorizontalSlider-slide-'
 
     get slidesCount() {
         const {children} = this.props
@@ -17,21 +18,20 @@ class VerticalSlider extends Component {
      * @private
      */
     _setActive(slide) {
-        const {store: {verticalActive: active}} = this.props
+        const {store: {horizontalActive: active}} = this.props
 
         if (slide === active) {
             return
         }
-        console.log('_setActive vertical', slide, active);
 
-        this.props.store.setVerticalActive(slide)
+        this.props.store.setHorizontalActive(slide)
     }
 
     /**
      * Goes to next slide
      */
     next() {
-        const {verticalActive: active} = this.props.store
+        const {horizontalActive: active} = this.props.store
         const slides = this.slidesCount - 1
 
         this._setActive(active < slides ? active + 1 : slides)
@@ -52,18 +52,18 @@ class VerticalSlider extends Component {
      * @private
      */
     slideTo(slide, scrollerSettings = {}) {
-        TweenLite.to(`#VerticalSlider`, 1, {x: `-${slide * 100}%`})
+        TweenLite.to(`#${this.id}`, 1, {x: `-${slide * 100}%`})
     }
 
     render() {
-        const {children, store: {verticalActive: active}} = this.props
+        const {children, store: {horizontalActive: active}} = this.props
 
         if (typeof window != 'undefined') {
             this.slideTo(active)
         }
 
-        return <div className={`VerticalSlider`}>
-            <div id={`VerticalSlider`} className={`container`}>
+        return <div className={this.id}>
+            <div id={this.id} className={`container`}>
                 <div className={`slides`}>
                     {children.map((child, i) => <div key={i} id={this.classPrefix + i}>{child}</div>)}
                 </div>
@@ -72,4 +72,4 @@ class VerticalSlider extends Component {
     }
 }
 
-export default VerticalSlider
+export default HorizontalSlider

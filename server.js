@@ -18,7 +18,7 @@ i18nInstance
   .init({
     fallbackLng: 'cs',
     preload: ['cs', 'en'], // preload all langages
-    ns: ['common', 'home'], // need to preload all the namespaces
+    ns: ['common', 'home', 'horizontalSlider'], // need to preload all the namespaces
     backend: {
       loadPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.json'),
       addPath: path.join(__dirname, '/locales/{{lng}}/{{ns}}.missing.json')
