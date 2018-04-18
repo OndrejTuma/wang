@@ -1,6 +1,21 @@
 .Slide1 {
+    &:before {
+        bottom: 0;
+        content: '';
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
     .content svg {
         fill: $white;
+        height: auto;
+        left: 50%;
+        max-width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
     .youtube {
         bottom: 0;

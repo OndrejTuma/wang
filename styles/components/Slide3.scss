@@ -10,20 +10,46 @@
     .collection {
         max-height: 60vh;
 
-        li {
-            display: inline-block;
 
-            img {
-                max-height: 300px;
-                width: auto;
+        .slick-slider {
+            margin: 0 auto 1em;
+            max-width: 500px;
+
+            .slick-arrow {
+                background: none;
+                border: none;
+                font-size: 0;
+                padding: 0;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+
+                &:before {
+                    cursor: pointer;
+                    font-size: 70px;
+                    line-height: 1;
+                }
             }
-        }
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            white-space: nowrap;
+            .slick-prev {
+                right: 100%;
+
+                &:before {
+                    //content: "\2039";
+                    content: "\2329";
+                }
+            }
+            .slick-next {
+                left: 100%;
+
+                &:before {
+                    //content: "\203A";
+                    content: "\232A";
+                }
+            }
+            img {
+                margin: auto;
+                max-height: 300px;
+            }
         }
 
         .cta {
@@ -33,6 +59,11 @@
     .content {
         background-color: rgba($white, .8);
         color: $black;
+
+        svg {
+            height: auto;
+            max-width: 100%;
+        }
     }
     .cta {
         margin-top: 50px;

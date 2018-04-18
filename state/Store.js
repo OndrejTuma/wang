@@ -1,6 +1,7 @@
 import {action, observable} from 'mobx'
 
 export class Store {
+	mobile_breakpoint = 768
 	@observable active = 0
 	@observable horizontalActive = 0
 	@observable show_collection = false
