@@ -3,6 +3,7 @@
     color: $red;
     font-family: 'press', sans-serif;
     font-size: .9em;
+    text-align: center;
     text-transform: uppercase;
     text-shadow: 10px 5px 2px rgba($red, .5);
 
@@ -20,12 +21,14 @@
     }
 
     .buy {
-        right: $distance;
-        top: $distance;
+        left: 0;
+        right: 0;
+        top: 5%;
     }
     .collection {
-        bottom: $distance;
-        right: $distance;
+        left: 0;
+        bottom: 100px;
+        right: 0;
     }
     .home {
         cursor: pointer;
@@ -40,6 +43,19 @@
             font-style: normal;
             margin-top: 1.4em;
             display: block;
+        }
+    }
+
+    @include media(phablet) {
+        .buy {
+            left: auto;
+            right: $distance;
+            top: $distance;
+        }
+        .collection {
+            bottom: $distance;
+            left: auto;
+            right: $distance;
         }
     }
 }

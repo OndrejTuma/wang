@@ -1,4 +1,2 @@
-// set media query variables
-@include media-queries(true);
-
+// set font
 @include font-face('press', 'press', $fonts-url);
