@@ -15,20 +15,15 @@ class Slide3 extends Component {
     content_id = 'Slide3-content'
     collection_expand_time = .5
 
-    get client() {
-        return typeof window != 'undefined'
-    }
-
     componentDidMount() {
-        if (!this.client) {
-            return
+        if (this.props.store.isClient) {
+            window.addEventListener('resize', this._handleResize)
+            this._recalculateContentDim()
         }
-
-        window.addEventListener('resize', this._handleResize)
-        this._recalculateContentDim()
     }
+
     componentWillUnmount() {
-        if (typeof window != 'undefined') {
+        if (this.props.store.isClient) {
             window.removeEventListener('resize', this._handleResize)
         }
     }
@@ -36,15 +31,17 @@ class Slide3 extends Component {
     _animate(container_id, time, props) {
         TweenLite.to(`#${container_id}`, time, props)
     }
+
     _expand(container_id) {
-        if (!this.client) {
+        if (!this.props.store.isClient) {
             return
         }
 
         this._animate(container_id, this.collection_expand_time, {width: '100%', height: '100%'})
     }
+
     _contract(container_id) {
-        if (!this.client) {
+        if (!this.props.store.isClient) {
             return
         }
 
@@ -56,8 +53,9 @@ class Slide3 extends Component {
             this._recalculateContentDim()
         }
     }
+
     _recalculateContentDim() {
-        if (!this.client) {
+        if (!this.props.store.isClient) {
             return
         }
 
@@ -77,8 +75,16 @@ class Slide3 extends Component {
         content_elm.style.height = styleHeight
         content_elm.style.width = styleWidth
     }
+
     _handleResize = e => {
         this._recalculateContentDim()
+
+        if (this.props.store.show_collection) {
+            return
+        }
+
+        const {width, height} = this.content_dim
+        TweenLite.set(`#${this.content_id}`, {width, height})
     }
     _show = e => {
         e.preventDefault()
@@ -105,7 +111,7 @@ class Slide3 extends Component {
 
     render() {
         const {store: {show_collection}} = this.props
-        const {drop, hide, show, text1, text2} = trans.key.slide3
+        const {slide3: {drop, hide, show, text}, common: {buy, buyLink}} = trans.key
 
         if (show_collection) {
             this._expand(this.content_id)
@@ -123,15 +129,13 @@ class Slide3 extends Component {
                         <Carousel/>
                         <div className={`cta`}>
                             <a href="#" onClick={this._hide}>{hide()}</a>
+                            <a href={buyLink()}>{buy()}</a>
+                            <Logo width={300} height={80}/>
                         </div>
-                        <Logo width={300} height={80}/>
                     </div>
                     : <div>
                         <p className="annotation">{drop()}</p>
-                        <Logo width={300} height={100}/>
-
-                        <p>{text1()}</p>
-                        <p>{text2()}</p>
+                        <p>{text()}</p>
 
                         <div className={`cta`}>
                             <a href="#" onClick={this._show}>{show()}</a>

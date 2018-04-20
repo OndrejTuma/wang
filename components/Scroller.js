@@ -117,7 +117,6 @@ class Scroller extends Component {
             (!value && !this.scrollEventInit)
         ) { return }
 
-console.log('setScrolling:', value);
         this.scrollEventInit = value
         value
             ? this._activateScrollListening()

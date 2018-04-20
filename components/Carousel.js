@@ -1,26 +1,38 @@
-import React from 'react'
-import Carousel from 'react-slick'
+import {Component} from 'react'
+import Slick from 'react-slick'
+import {inject} from 'mobx-react'
+import Lightbox from 'react-image-lightbox'
 
 const slides = [
     {
-        url: '//placehold.it/800x1600',
+        url: 'static/images/1.jpg',
         alt: 'image',
-        thumb: '//placehold.it/400x800',
+        thumb: 'static/images/mobile/1.jpg',
     },
     {
-        url: '//placehold.it/800x1600',
+        url: 'static/images/2.jpg',
         alt: 'image',
-        thumb: '//placehold.it/400x800',
+        thumb: 'static/images/mobile/2.jpg',
     },
     {
-        url: '//placehold.it/800x1600',
+        url: 'static/images/3.jpg',
         alt: 'image',
-        thumb: '//placehold.it/400x800',
+        thumb: 'static/images/mobile/3.jpg',
     },
     {
-        url: '//placehold.it/800x1600',
+        url: 'static/images/4.jpg',
         alt: 'image',
-        thumb: '//placehold.it/400x800',
+        thumb: 'static/images/mobile/4.jpg',
+    },
+    {
+        url: 'static/images/5.jpg',
+        alt: 'image',
+        thumb: 'static/images/mobile/5.jpg',
+    },
+    {
+        url: 'static/images/6.jpg',
+        alt: 'image',
+        thumb: 'static/images/mobile/6.jpg',
     },
 ]
 
@@ -42,10 +54,53 @@ const settings = {
     ],
 }
 
-export default () => <Carousel {...settings}>
-    {slides.map((img, i) => <div key={i}>
-        <a href={img.url}>
-            <img src={img.thumb} alt={img.alt}/>
-        </a>
-    </div>)}
-</Carousel>
+@inject('store')
+class Carousel extends Component {
+    state = {
+        isOpen: false,
+        photoIndex: 0,
+    }
+
+    _openLightBox(e, i) {
+        e.preventDefault()
+
+        this.setState({
+            isOpen: true,
+            photoIndex: i
+        })
+    }
+
+    render() {
+        const {isOpen, photoIndex} = this.state
+
+        return <div>
+            {isOpen && (
+                <Lightbox
+                    mainSrc={slides[photoIndex].url}
+                    nextSrc={slides[(photoIndex + 1) % slides.length].url}
+                    prevSrc={slides[(photoIndex + slides.length - 1) % slides.length].url}
+                    onCloseRequest={() => this.setState({ isOpen: false })}
+                    onMovePrevRequest={() =>
+                        this.setState({
+                            photoIndex: (photoIndex + slides.length - 1) % slides.length,
+                        })
+                    }
+                    onMoveNextRequest={() =>
+                        this.setState({
+                            photoIndex: (photoIndex + 1) % slides.length,
+                        })
+                    }
+                />
+            )}
+            <Slick {...settings}>
+                {slides.map((img, i) => <div key={i}>
+                    <a href={img.url} onClick={e => this._openLightBox(e, i)}>
+                        <img src={img.thumb} alt={img.alt}/>
+                    </a>
+                </div>)}
+            </Slick>
+        </div>
+    }
+}
+
+export default Carousel

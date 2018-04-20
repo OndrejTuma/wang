@@ -5,12 +5,17 @@
     z-index: 1;
 
     .content {
-        margin: 50px auto;
-        min-height: 300px;
-        padding-left: 20px;
-        padding-right: 20px;
-        width: 86%;
-        position: relative;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        left: 50%;
+        min-height: 200px;
+        padding: 1px 20px;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        z-index: 1;
 
         .annotation {
             color: #a3a3a5;
@@ -18,18 +23,17 @@
         }
     }
 
+    h2 {
+        text-align: center;
+    }
+
     @include media(phablet) {
         padding: 0;
 
         .content {
-            left: 50%;
             margin: 0;
-            padding-left: 50px;
-            padding-right: 50px;
-            position: absolute;
+            padding: 1px 50px;
             text-align: center;
-            top: 50%;
-            transform: translate(-50%, -50%);
             width: 76%;
         }
     }

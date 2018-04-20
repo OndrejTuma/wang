@@ -18,7 +18,7 @@ class HorizontalSliderWithControls extends Component {
     render() {
         const {children, store} = this.props
 
-        return <HorizontalSlider>
+        return <HorizontalSlider className={`HorizontalSliderWithControls`}>
             {children.map((slide, i) => {
                 const currentSlide = this._getTwoDigitsFormat(i + 1)
                 const totalSlides = this._getTwoDigitsFormat(children.length)
@@ -26,9 +26,11 @@ class HorizontalSliderWithControls extends Component {
                 return <div key={i} className={`slide slide-${i}`}>
                     <GlitchBg/>
                     <div className={`content`}>
-                        <p className={`annotation`}>{`${currentSlide} - ${totalSlides}`}</p>
-                        {slide}
-                        <SlideControl store={store} position={i} length={children.length}/>
+                        <div>
+                            <p className={`annotation`}>{`${currentSlide} - ${totalSlides}`}</p>
+                            {slide}
+                            <SlideControl store={store} position={i} length={children.length}/>
+                        </div>
                     </div>
                 </div>
             })}
@@ -44,13 +46,13 @@ const SlideControl = ({position, length, store}) => {
             className={classNames('left', {disabled: position === 0})}
             onClick={e => position > 0 && store.setHorizontalActive(position - 1)}
         >
-            <ArrowLeft width={50} height={30}/> {prev()}
+            {!store.isMobile && <ArrowLeft width={50} height={30}/>} {prev()}
         </p>
         <p
             className={classNames('right', {disabled: position === length - 1})}
             onClick={e => position < length - 1 && store.setHorizontalActive(position + 1)}
         >
-            {next()} <ArrowRight width={50} height={30}/>
+            {next()} {!store.isMobile && <ArrowRight width={50} height={30}/>}
         </p>
     </div>
 }

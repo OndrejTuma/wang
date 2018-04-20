@@ -47,8 +47,8 @@ class Index extends Component {
             <Head>
                 <title>Wang ms</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
-                <style type="text/css">{css}</style>
                 <link rel="stylesheet" href="https://use.typekit.net/mqa6irl.css"/>
+                <style type="text/css">{css}</style>
             </Head>
             <SocialWrapper/>
             <Controls/>

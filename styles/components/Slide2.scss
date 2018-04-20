@@ -8,13 +8,20 @@
         top: 0;
         z-index: -1;
     }
-    .container {
-    }
     .content {
         background-color: rgba($white, .8);
         color: $black;
+        min-height: 320px;
     }
     h2 {
         margin-bottom: 10px;
     }
+
+    @include media(phablet) {
+        .content {
+            min-height: auto;
+        }
+    }
 }
+
+#Scroller-slide-1 { height: 100vh; }

@@ -20,7 +20,7 @@ export default {
             },
             "slide1": {
                 "heading": "Alexander Wang",
-                "text": "Wang přišel s něčím, co bychom v normálním případě nazývali ostřejším výrazem, než je troufalost. Obrátil logo adidas vzhůru nohama. V rámci této spolupráce záhy začaly vznikat jednoduché, ale přesto velmi stylové kousky. K prvnímu spojení Alexandra Wanga a adidas došlo ke konci roku 2016, kdy byla představena prémiová kolekce S/S 2017. Na kolekci se pracovalo přes rok a přinesla 84 unisex kusů oblečení."
+                "text": "Wang daringly turned the adidas logo around. The first union of Alexander Wang and adidas Originals occured at the end of 2016 with the premium collection S/S 2017 which took for over a year to create and it included 84 unisex apparel pieces. "
             },
             "slide2": {
                 "heading": "Alexander Wang",
@@ -46,9 +46,22 @@ export default {
     },
     slide3: {
         "drop": "Drop 4",
-        "text1": "This season´s drops from adidas Originals by AW have one thing in common. They are inspired by factory environment, the world of perfect imperfections and work uniforms.",
-        "text2": "Drop 4 brings more than that. It points to the disparate perception of quality in the world and is inspired by work uniforms, raw bases and generally industrial environments.",
+        "text": "This season´s drops from adidas Originals by AW have one thing in common. They are inspired by factory environment, the world of perfect imperfections and work uniforms. Drop 4 brings more than that. It points to the disparate perception of quality in the world and is inspired by work uniforms, raw bases and generally industrial environments.",
         "hide": "back",
         "show": "show collection"
+    },
+    socials: {
+        "facebook": {
+            label: "Facebook",
+            url: "https://www.facebook.com/footshopEU"
+        },
+        "twitter": {
+            label: "Twitter",
+            url: "https://twitter.com/footshopeu"
+        },
+        "instagram": {
+            label: "Instagram",
+            url: "https://www.instagram.com/footshop/"
+        },
     }
 }

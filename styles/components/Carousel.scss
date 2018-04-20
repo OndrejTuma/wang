@@ -1,0 +1,41 @@
+.slick-slider {
+    margin: 0 auto 1em;
+    max-width: 300px;
+
+    .slick-arrow {
+        background: none;
+        border: none;
+        font-size: 0;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+
+        &:before {
+            cursor: pointer;
+            font-size: 70px;
+            line-height: 1;
+        }
+    }
+    .slick-prev {
+        left: 0;
+
+        &:before {
+            //content: "\2039";
+            content: "\2329";
+        }
+    }
+    .slick-next {
+        right: 0;
+
+        &:before {
+            //content: "\203A";
+            content: "\232A";
+        }
+    }
+    img {
+        margin: auto;
+        max-height: 300px;
+    }
+}

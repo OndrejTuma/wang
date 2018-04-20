@@ -20,7 +20,7 @@ export default {
             },
             "slide1": {
                 "heading": "Alexander Wang",
-                "text": "Wang přišel s něčím, co bychom v normálním případě nazývali ostřejším výrazem, než je troufalost. Obrátil logo adidas vzhůru nohama. V rámci této spolupráce záhy začaly vznikat jednoduché, ale přesto velmi stylové kousky. K prvnímu spojení Alexandra Wanga a adidas došlo ke konci roku 2016, kdy byla představena prémiová kolekce S/S 2017. Na kolekci se pracovalo přes rok a přinesla 84 unisex kusů oblečení."
+                "text": "Wang troufale obrátil logo adidas Originals vzhůru nohama. K prvnímu spojení AW a adidas Originals došlo ke konci roku 2016 prémiovou kolekcí S/S 2017, na které se pracovalo přes rok a přinesla 84 unisex kusů oblečení."
             },
             "slide2": {
                 "heading": "Alexander Wang",
@@ -46,9 +46,22 @@ export default {
     },
     slide3: {
         "drop": "Drop 4",
-        "text1": "Všechny dropy kolekce adidas originals by AW této sezóny mají jedno společné. Jsou inspirovány prostředím továrny, světem dokonalých nedokonalostí a pracovními oděvy.",
-        "text2": "DROP 4 přináší ještě více. Poukazuje na nesourodé vnímání kvality ve světě a inspiruje se pracovními uniformami, surovými základy a obecně industriálním prostředím.",
+        "text": "Všechny dropy kolekce adidas originals by AW této sezóny mají jedno společné. Jsou inspirovány prostředím továrny, světem dokonalých nedokonalostí a pracovními oděvy. DROP 4 přináší ještě více. Poukazuje na nesourodé vnímání kvality ve světě a inspiruje se pracovními uniformami, surovými základy a obecně industriálním prostředím.",
         "hide": "zpátky",
         "show": "ukaž kolekci"
+    },
+    socials: {
+        "facebook": {
+            label: "Facebook",
+            url: "https://www.facebook.com/footshopCR/"
+        },
+        "twitter": {
+            label: "Twitter",
+            url: "https://twitter.com/footshopcz"
+        },
+        "instagram": {
+            label: "Instagram",
+            url: "https://www.instagram.com/footshop/?hl=cs"
+        },
     }
 }

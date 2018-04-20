@@ -9,36 +9,6 @@
             white-space: normal;
         }
     }
-    .controls {
-        color: $red;
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        right: 0;
-
-        p {
-            cursor: pointer;
-        }
-        svg {
-            fill: $red;
-            vertical-align: middle;
-        }
-
-        .disabled {
-            color: $gray;
-            cursor: default;
-
-            svg {
-                fill: $gray;
-            }
-        }
-        .left {
-            float: left;
-        }
-        .right {
-            float: right;
-        }
-    }
     .slides > div {
         display: inline-block;
         position: relative;

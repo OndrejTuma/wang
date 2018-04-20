@@ -3,57 +3,17 @@
         z-index: 9;
     }
 
-    .annotation {
-        margin: 0;
-        padding: 15px 0;
-    }
     .collection {
-        max-height: 60vh;
-
-
-        .slick-slider {
-            margin: 0 auto 1em;
-            max-width: 500px;
-
-            .slick-arrow {
-                background: none;
-                border: none;
-                font-size: 0;
-                padding: 0;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-
-                &:before {
-                    cursor: pointer;
-                    font-size: 70px;
-                    line-height: 1;
-                }
-            }
-            .slick-prev {
-                right: 100%;
-
-                &:before {
-                    //content: "\2039";
-                    content: "\2329";
-                }
-            }
-            .slick-next {
-                left: 100%;
-
-                &:before {
-                    //content: "\203A";
-                    content: "\232A";
-                }
-            }
-            img {
-                margin: auto;
-                max-height: 300px;
-            }
-        }
-
         .cta {
-            margin-top: 0;
+            margin: 0;
+
+            a {
+                display: block;
+                margin-bottom: 10px;
+            }
+            svg {
+                margin-top: 10px;
+            }
         }
     }
     .content {
@@ -66,12 +26,20 @@
         }
     }
     .cta {
-        margin-top: 50px;
-        padding-bottom: 40px; //bigger to hotfix/compensate for smaller container height due to not loaded fonts
+        margin: 20px 0;
+        text-align: center;
+        text-transform: lowercase;
 
         a {
             color: $red;
+            margin: 0 10px;
             text-decoration: none;
+        }
+    }
+
+    @include media(phablet) {
+        .cta {
+            margin-top: 50px;
         }
     }
 }

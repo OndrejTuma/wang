@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {inject, observer} from 'mobx-react'
 import {TweenLite} from 'gsap'
+import classNames from 'classnames'
 
 @inject('store') @observer
 class HorizontalSlider extends Component {
@@ -56,13 +57,13 @@ class HorizontalSlider extends Component {
     }
 
     render() {
-        const {children, store: {horizontalActive: active}} = this.props
+        const {className, children, store: {isClient, horizontalActive: active}} = this.props
 
-        if (typeof window != 'undefined') {
+        if (isClient) {
             this.slideTo(active)
         }
 
-        return <div className={this.id}>
+        return <div className={classNames(this.id, className)}>
             <div id={this.id} className={`container`}>
                 <div className={`slides`}>
                     {children.map((child, i) => <div key={i} id={this.classPrefix + i}>{child}</div>)}
