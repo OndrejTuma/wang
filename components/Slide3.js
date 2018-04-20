@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
 import {inject, observer} from 'mobx-react'
-import {translate} from 'react-i18next'
 import {TweenLite} from 'gsap'
 import classNames from 'classnames'
-import Slider from 'react-slick'
 
+import {trans} from '../state/Translate'
+
+import Carousel from './Carousel'
 import GlitchBg from './GlitchBg'
 
 import Logo from '../static/svg/logo-aw.svg'
@@ -13,23 +14,6 @@ import Logo from '../static/svg/logo-aw.svg'
 class Slide3 extends Component {
     content_id = 'Slide3-content'
     collection_expand_time = .5
-    carousel_settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                }
-            }
-        ],
-    }
 
     get client() {
         return typeof window != 'undefined'
@@ -40,7 +24,13 @@ class Slide3 extends Component {
             return
         }
 
+        window.addEventListener('resize', this._handleResize)
         this._recalculateContentDim()
+    }
+    componentWillUnmount() {
+        if (typeof window != 'undefined') {
+            window.removeEventListener('resize', this._handleResize)
+        }
     }
 
     _animate(container_id, time, props) {
@@ -67,12 +57,28 @@ class Slide3 extends Component {
         }
     }
     _recalculateContentDim() {
+        if (!this.client) {
+            return
+        }
+
         const content_elm = document.getElementById(this.content_id)
+
+        const styleHeight = content_elm.style.height
+        const styleWidth = content_elm.style.width
+
+        content_elm.style.height = ''
+        content_elm.style.width = ''
 
         this.content_dim = {
             height: content_elm.offsetHeight,
             width: content_elm.offsetWidth,
         }
+
+        content_elm.style.height = styleHeight
+        content_elm.style.width = styleWidth
+    }
+    _handleResize = e => {
+        this._recalculateContentDim()
     }
     _show = e => {
         e.preventDefault()
@@ -96,19 +102,10 @@ class Slide3 extends Component {
 
         this.props.store.hideCollection()
     }
-    _processChangeCollectionShow(show) {
-        const {store: {show_collection}} = this.props
-
-        if (
-            (show && show_collection)
-            || (!show && !show_collection)
-        ) {
-
-        }
-    }
 
     render() {
-        const {store: {show_collection}, t} = this.props
+        const {store: {show_collection}} = this.props
+        const {drop, hide, show, text1, text2} = trans.key.slide3
 
         if (show_collection) {
             this._expand(this.content_id)
@@ -122,49 +119,22 @@ class Slide3 extends Component {
             <div className={`content`} id={this.content_id}>
                 {show_collection
                     ? <div className={`collection`}>
-                        <p className="annotation">{t('drop')}</p>
-                        <Slider {...this.carousel_settings}>
-                            {[
-                                {
-                                    url: '//placehold.it/800x1600',
-                                    alt: 'image',
-                                    thumb: '//placehold.it/400x800',
-                                },
-                                {
-                                    url: '//placehold.it/800x1600',
-                                    alt: 'image',
-                                    thumb: '//placehold.it/400x800',
-                                },
-                                {
-                                    url: '//placehold.it/800x1600',
-                                    alt: 'image',
-                                    thumb: '//placehold.it/400x800',
-                                },
-                                {
-                                    url: '//placehold.it/800x1600',
-                                    alt: 'image',
-                                    thumb: '//placehold.it/400x800',
-                                },
-                            ].map((img, i) => <div key={i}>
-                                <a href={img.url}>
-                                    <img src={img.thumb} alt={img.alt}/>
-                                </a>
-                            </div>)}
-                        </Slider>
+                        <p className="annotation">{drop()}</p>
+                        <Carousel/>
                         <div className={`cta`}>
-                            <a href="#" onClick={this._hide}>{t('hide')}</a>
+                            <a href="#" onClick={this._hide}>{hide()}</a>
                         </div>
                         <Logo width={300} height={80}/>
                     </div>
                     : <div>
-                        <p className="annotation">{t('drop')}</p>
+                        <p className="annotation">{drop()}</p>
                         <Logo width={300} height={100}/>
 
-                        <p>{t('text1')}</p>
-                        <p>{t('text2')}</p>
+                        <p>{text1()}</p>
+                        <p>{text2()}</p>
 
                         <div className={`cta`}>
-                            <a href="#" onClick={this._show}>{t('show')}</a>
+                            <a href="#" onClick={this._show}>{show()}</a>
                         </div>
                     </div>
                 }
@@ -173,4 +143,4 @@ class Slide3 extends Component {
     }
 }
 
-export default translate('slide3')(Slide3)
+export default Slide3

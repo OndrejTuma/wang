@@ -1,25 +1,51 @@
 import React, {Component} from 'react'
-import {translate} from 'react-i18next'
+
+import {trans} from '../state/Translate'
 
 import HorizontalSliderWithControls from './HorizontalSliderWithControls'
 
+const {slideshow} = trans.key.slide2
+const slides = [
+    {
+        heading: slideshow.slide0.heading(),
+        text: slideshow.slide0.text(),
+    },
+    {
+        heading: slideshow.slide1.heading(),
+        text: slideshow.slide1.text(),
+    },
+    {
+        heading: slideshow.slide2.heading(),
+        text: slideshow.slide2.text(),
+    },
+    {
+        heading: slideshow.slide3.heading(),
+        text: slideshow.slide3.text(),
+    },
+    {
+        heading: slideshow.slide4.heading(),
+        text: slideshow.slide4.text(),
+    },
+    {
+        heading: slideshow.slide5.heading(),
+        text: slideshow.slide5.text(),
+    },
+    {
+        heading: slideshow.slide6.heading(),
+        text: slideshow.slide6.text(),
+    },
+]
+
 class Slide2 extends Component {
     render() {
-        const {t} = this.props
-
         return <div className={'Slide Slide2'}>
             <HorizontalSliderWithControls>
-                {[0, 1].map(slide => {
-                    const heading = t(`slide${slide}.heading`)
-                    const text = t(`slide${slide}.text`)
-
-                    return <div key={slide}>
-                        <h2>
-                            <span className={`glitch`} data-text={heading}>{heading}</span>
-                        </h2>
-                        <p>{text}</p>
-                    </div>
-                })}
+                {slides.map(({heading, text}, i) => <div key={i}>
+                    <h2>
+                        <span className={`glitchText`}>{heading}</span>
+                    </h2>
+                    <p>{text}</p>
+                </div>)}
             </HorizontalSliderWithControls>
         </div>
     }
@@ -27,4 +53,4 @@ class Slide2 extends Component {
 
 
 
-export default translate('slide2')(Slide2)
+export default Slide2

@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
-    "export": "next export",
+    "build": "next build && next export",
     "start": "NODE_ENV=production node server.js"
   },
   "repository": {
@@ -24,17 +23,12 @@
     "classnames": "^2.2.5",
     "express": "4.16.2",
     "gsap": "^1.20.4",
-    "i18next": "10.4.1",
-    "i18next-browser-languagedetector": "2.1.0",
-    "i18next-express-middleware": "1.0.10",
-    "i18next-node-fs-backend": "1.0.0",
-    "i18next-xhr-backend": "1.5.1",
     "mobx": "^4.1.1",
     "mobx-react": "^5.0.0",
+    "mobx-translate": "^0.0.6",
     "next": "^5.1.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "react-i18next": "7.3.6",
     "react-scroll": "^1.7.8",
     "react-slick": "^0.23.1",
     "react-youtube": "^7.5.0"

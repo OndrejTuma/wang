@@ -23,6 +23,9 @@ export default class Timer extends Component {
     componentDidMount() {
         this._startTicking()
     }
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
 
     _startTicking() {
         clearInterval(this.interval)

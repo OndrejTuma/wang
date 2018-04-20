@@ -3,7 +3,7 @@ import {action, computed, observable} from 'mobx'
 export class Store {
     mobile_breakpoint = 768
     @observable viewport_width = 0
-    @observable active = 0
+    @observable active = 1
     @observable horizontalActive = 0
     @observable show_collection = false
 
@@ -33,8 +33,8 @@ export class Store {
         this.horizontalActive = slide
     }
     @action
-    setViewportWidth() {
-        this.viewport_width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+    setViewportWidth(width) {
+        this.viewport_width = width
     }
     @action
     showCollection() {

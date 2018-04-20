@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
-import {translate} from 'react-i18next'
 import {inject, observer} from 'mobx-react'
+
+import {trans} from '../state/Translate'
+const {home, buy, buyLink, collection} = trans.key.common
 
 import Dot from '../static/svg/dot-single.svg'
 import Triangle from '../static/svg/triangle-right.svg'
@@ -11,29 +13,23 @@ import Timer from './Timer'
 class Controls extends Component {
 
     get Home() {
-        const {t} = this.props
-
         return <div className={'home'} onClick={e => this.props.store.setActive(0)}>
-            <Dot width={15} height={15}/> {t('home')}
+            <Dot width={15} height={15}/> {home()}
         </div>
     }
 
     get Buy() {
-        const {t} = this.props
-
         return <div className={'buy'}>
-            <a href={t('buyLink')}>
-                <Triangle width={15} height={15}/> {t('buy')}
+            <a href={buyLink()}>
+                <Triangle width={15} height={15}/> {buy()}
             </a>
         </div>
     }
 
     get Collection() {
-        const {t} = this.props
-
         return <div className={'collection'}>
             <a href="#collection" onClick={this._collectionClick}>
-                <Triangle width={15} height={15}/> {t('collection')}
+                <Triangle width={15} height={15}/> {collection()}
             </a>
         </div>
     }
@@ -72,4 +68,4 @@ class Controls extends Component {
     }
 }
 
-export default translate('common')(Controls)
+export default Controls

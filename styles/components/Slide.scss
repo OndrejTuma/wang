@@ -1,21 +1,36 @@
 .Slide {
-    height: 100vh;
+    min-height: 100vh;
+    padding: 1px 0;
     position: relative;
     z-index: 1;
 
     .content {
-        left: 50%;
+        margin: 50px auto;
         min-height: 300px;
-        padding-left: 50px;
-        padding-right: 50px;
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 76%;
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 86%;
+        position: relative;
 
         .annotation {
             color: #a3a3a5;
+            text-align: center;
+        }
+    }
+
+    @include media(phablet) {
+        padding: 0;
+
+        .content {
+            left: 50%;
+            margin: 0;
+            padding-left: 50px;
+            padding-right: 50px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 76%;
         }
     }
 }

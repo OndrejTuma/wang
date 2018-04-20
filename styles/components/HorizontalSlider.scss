@@ -2,6 +2,13 @@
     overflow: hidden;
     width: 100vw;
 
+    .container {
+        white-space: nowrap;
+
+        .slide {
+            white-space: normal;
+        }
+    }
     .controls {
         color: $red;
         bottom: 0;

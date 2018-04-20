@@ -4,6 +4,7 @@ import {inject, observer} from 'mobx-react'
 
 @inject('store') @observer
 class Scroller extends Component {
+    scrollEventInit = false
     scrollerSettings = {
         duration: 1000,
         ignoreCancelEvents: true,
@@ -22,14 +23,10 @@ class Scroller extends Component {
         Events.scrollEvent.register('end', this._handleScrollEnd)
 
         scrollSpy.update()
-
-        this._activateScrollListening()
     }
     componentWillUnmount() {
         Events.scrollEvent.remove('begin')
         Events.scrollEvent.remove('end')
-
-        this._deactivateScrollListening()
     }
 
     _activateScrollListening() {
@@ -40,7 +37,7 @@ class Scroller extends Component {
         }
     }
     _deactivateScrollListening() {
-        if (typeof window !== 'undefined') {
+        if (typeof window != 'undefined') {
             window.removeEventListener('touchmove', this._handleTouch)
             window.removeEventListener('wheel', this._handleScroll)
             window.removeEventListener('keydown', this._handleKeyDown)
@@ -73,11 +70,15 @@ class Scroller extends Component {
         scrollDown ? this.next() : this.prev()
     }
     _handleScrollEnd = () => {
-        this._activateScrollListening()
-        this.lastTouchY = null
+        if (this.scrollEventInit) {
+            this._activateScrollListening()
+            this.lastTouchY = null
+        }
     }
     _handleScrollStart = () => {
-        this._deactivateScrollListening()
+        if (this.scrollEventInit) {
+            this._deactivateScrollListening()
+        }
     }
     _handleTouch = e => {
         e.preventDefault()
@@ -110,6 +111,18 @@ class Scroller extends Component {
 
         this.props.store.setActive(slide)
     }
+    _setScrolling(value) {
+        if (
+            (value && this.scrollEventInit) ||
+            (!value && !this.scrollEventInit)
+        ) { return }
+
+console.log('setScrolling:', value);
+        this.scrollEventInit = value
+        value
+            ? this._activateScrollListening()
+            : this._deactivateScrollListening()
+    }
 
     /**
      * Goes to next slide
@@ -120,6 +133,7 @@ class Scroller extends Component {
 
         this._setActive(active < slides ? active + 1 : slides)
     }
+
     /**
      * Goes to previous slide
      */
@@ -143,9 +157,10 @@ class Scroller extends Component {
     }
 
     render() {
-        const {children, store: {active}} = this.props
+        const {children, store: {active, isMobile}} = this.props
 
         if (typeof window != 'undefined') {
+            this._setScrolling(!isMobile)
             this.slideTo(active)
         }
 

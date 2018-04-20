@@ -3,8 +3,8 @@ $color-bg: #000;
 $color-link: #f9d77e;
 $color-link-hover: #fff;
 $color-info: #efc453;
-$glitch-width: 100vw;
-$glitch-height: 100vh;
+$glitch-width: 100%;
+$glitch-height: 100%;
 $gap-horizontal: 10px;
 $gap-vertical: 5px;
 $time-anim: 4s;
@@ -32,8 +32,13 @@ $blend-color-5: #af4949;
     &__img {
 
         .Slide3 & { @include background-image('collection.jpg'); }
-        .Slide2 .slide-0 & { @include background-image('aw.jpg'); }
-        .Slide2 .slide-1 & { @include background-image('aw.jpg'); }
+        .Slide2 .slide-0 & { @include background-image('slide-0.jpg'); }
+        .Slide2 .slide-1 & { @include background-image('slide-1.jpg'); }
+        .Slide2 .slide-2 & { @include background-image('slide-2.jpg'); }
+        .Slide2 .slide-3 & { @include background-image('slide-3.jpg'); }
+        .Slide2 .slide-4 & { @include background-image('slide-4.jpg'); }
+        .Slide2 .slide-5 & { @include background-image('slide-5.jpg'); }
+        .Slide2 .slide-6 & { @include background-image('slide-6.jpg'); }
 
         position: absolute;
         top: calc(-1 * #{$gap-vertical});
