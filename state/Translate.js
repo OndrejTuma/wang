@@ -5,8 +5,11 @@ import EN from '../locales/EN'
 
 const translateInstance = new MobxTranslate();
 
-translateInstance.loadStrings('CS', CS);
-translateInstance.loadStrings('EN', EN);
-translateInstance.setLanguage('CS');
+translateInstance.loadStrings('cs', CS);
+translateInstance.loadStrings('en', EN);
+
+translateInstance.setLanguage(
+    TRANSLATION_LANG || 'cs'
+);
 
 export const trans = translateInstance;

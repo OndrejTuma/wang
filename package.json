@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build && next export",
+    "build": "yarn build:cs && yarn build:en",
+    "build:cs": "cross-env LANG=cs next build && cross-env LANG=cs next export -o out/cs",
+    "build:en": "cross-env LANG=en next build && cross-env LANG=en next export -o out/en",
     "start": "NODE_ENV=production node server.js"
   },
   "repository": {
@@ -39,6 +41,7 @@
     "babel-plugin-inline-react-svg": "^0.5.2",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-wrap-in-js": "^1.1.1",
+    "cross-env": "^5.1.4",
     "glob": "^7.1.2",
     "node-sass": "^4.8.3",
     "postcss-easy-import": "^3.0.0",
