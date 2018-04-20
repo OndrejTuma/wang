@@ -9,6 +9,7 @@ $gap-horizontal: 10px;
 $gap-vertical: 5px;
 $time-anim: 4s;
 $delay-anim: 2s;
+$repeat-anim: 5;
 $blend-mode-1: none;
 $blend-mode-2: none;
 $blend-mode-3: none;
@@ -75,7 +76,7 @@ $blend-color-5: #af4949;
             animation-duration: $time-anim;
             animation-delay: $delay-anim;
             animation-timing-function: linear;
-            animation-iteration-count: 2;
+            animation-iteration-count: $repeat-anim;
         }
 
         &__img:nth-child(2) {
