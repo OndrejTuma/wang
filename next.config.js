@@ -2,6 +2,8 @@ const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack')
 
+process.env.LANG = process.env.LANG || 'cs'
+
 module.exports = {
     exportPathMap: function () {
         return {
@@ -27,8 +29,10 @@ module.exports = {
             }
         )
 
+        // config.output.publicPath = `/${process.env.LANG}`
+
         config.plugins.push(new webpack.DefinePlugin({
-            'TRANSLATION_LANG': JSON.stringify(process.env.LANG) || 'cs'
+            'TRANSLATION_LANG': JSON.stringify(process.env.LANG)
         }))
 
         return config

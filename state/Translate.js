@@ -9,7 +9,7 @@ translateInstance.loadStrings('cs', CS);
 translateInstance.loadStrings('en', EN);
 
 translateInstance.setLanguage(
-    TRANSLATION_LANG || 'cs'
+    TRANSLATION_LANG
 );
 
 export const trans = translateInstance;
