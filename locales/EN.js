@@ -1,12 +1,15 @@
 export default {
+    header: {
+        title: "Alexander Wang at Footshop"
+    },
+    og: {
+        "fbLink": "https://wang.footshop.cz/en/",
+    },
     common: {
         "home": "Home",
-        "buy": "Shop at Footshopu",
+        "buy": "Shop at Footshop",
         "collection": "Collection",
-        "buyLink": "https://www.footshop.eu/en/1517-adidas-originals-by-alexander-wang/"
-    },
-    home: {
-        "welcome": "Welcome to Wang"
+        "buyLink": "https://www.footshop.eu/en/1517-adidas-originals-by-alexander-wang/",
     },
     horizontalSlider: {
         "prev": "prev",
@@ -20,7 +23,7 @@ export default {
             },
             "slide1": {
                 "heading": "Alexander Wang",
-                "text": "Wang daringly turned the adidas logo around. The first union of Alexander Wang and adidas Originals occured at the end of 2016 with the premium collection S/S 2017 which took for over a year to create and it included 84 unisex apparel pieces. "
+                "text": "Wang daringly turned the adidas logo around. The first union of Alexander Wang and adidas Originals occured at the end of 2016 with the premium collection S/S 2017 which took for over a year to create and it included 84 unisex apparel pieces."
             },
             "slide2": {
                 "heading": "Alexander Wang",

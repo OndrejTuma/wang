@@ -1,6 +1,5 @@
 .slick-slider {
     margin: 0 auto 1em;
-    width: 300px;
 
     .slick-arrow {
         background: none;
@@ -37,10 +36,5 @@
     img {
         margin: auto;
         max-height: 300px;
-    }
-
-
-    @include media(phablet) {
-        width: 500px;
     }
 }

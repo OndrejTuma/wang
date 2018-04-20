@@ -1,12 +1,15 @@
 export default {
+    header: {
+        title: "Alexander Wang ve Footshopu"
+    },
+    og: {
+        "fbLink": "https://wang.footshop.cz/cs/",
+    },
     common: {
         "home": "Nahoru",
         "buy": "Nakoupit na Footshopu",
         "collection": "Kolekce",
-        "buyLink": "https://www.footshop.cz/cs/1517-adidas-originals-by-alexander-wang/"
-    },
-    home: {
-        "welcome": "Vítej na Wang microsite"
+        "buyLink": "https://www.footshop.cz/cs/1517-adidas-originals-by-alexander-wang/",
     },
     horizontalSlider: {
         "prev": "předchozí",

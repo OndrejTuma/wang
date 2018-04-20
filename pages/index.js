@@ -5,6 +5,7 @@ import {Provider, inject, observer} from 'mobx-react'
 import css from '../styles/index.scss'
 
 import {Store} from '../state/Store'
+import {trans} from '../state/Translate'
 
 import Slide1 from '../components/Slide1'
 import Slide2 from '../components/Slide2'
@@ -38,6 +39,7 @@ class Index extends Component {
 
     render() {
         const {store: {isMobile}} = this.props
+        const {header: {title}, og: {fbLink}} = trans.key
         let DisclaimerComponent = ''
 
         if (!isMobile) {
@@ -46,10 +48,15 @@ class Index extends Component {
 
         return <div>
             <Head>
-                <title>Wang ms</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+                <meta property="og:title" content={title()} />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={fbLink()} />
+                <meta property="og:image" content={`static/images/og.jpg`} />
+                <style dangerouslySetInnerHTML={{__html: css}}/>
+                <title>{title()}</title>
                 <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
                 <link rel="stylesheet" href="https://use.typekit.net/mqa6irl.css"/>
-                <style type="text/css">{css}</style>
             </Head>
             <GoogleTagManager gtmId={`GTM-5LTVTK2`} />
             <SocialWrapper/>

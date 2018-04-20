@@ -35,4 +35,10 @@
             float: right;
         }
     }
+
+    @include media(phablet) {
+        .content {
+            padding-bottom: 60px;
+        }
+    }
 }

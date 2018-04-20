@@ -15,6 +15,7 @@ body {
 
 	@include media(phablet) {
 		overflow: hidden;
+		font-size: 18px;
 	}
 }
 

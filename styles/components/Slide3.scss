@@ -4,6 +4,8 @@
     }
 
     .collection {
+        max-width: 100%;
+
         .cta {
             margin: 0;
 
@@ -39,6 +41,9 @@
     }
 
     @include media(phablet) {
+        .collection {
+            width: 70%;
+        }
         .cta {
             margin-top: 50px;
         }
