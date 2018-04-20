@@ -1,0 +1,19 @@
+stages:
+    - deploy
+
+deploy to staging:
+    only:
+    - master
+    stage: deploy
+    tags:
+    - shell
+    script: ssh web@dev.footshop.cz 'bash -s' < ./bin/deploy_staging.sh $CI_COMMIT_SHA
+
+deploy to production:
+    only:
+    - master
+    stage: deploy
+    tags:
+    - shell
+    when: manual
+    script: ssh web@footshop.cz 'bash -s' < ./bin/deploy_production.sh $CI_COMMIT_SHA
