@@ -11,10 +11,16 @@
         background: #fff;
         border-radius: 50%;
         //box-shadow: 2px 2px 2px lighten($tundora, 20%);
+        color: $tundora;
+        font-size: .7em;
+        font-weight: 700;
         display: block;
         height: 30px;
+        letter-spacing: 0;
+        line-height: 1.4;
         text-align: center;
         padding-top: 7px;
+        text-decoration: none;
         width: 30px;
     }
     li {

@@ -66,5 +66,9 @@ export default {
             label: "Instagram",
             url: "https://www.instagram.com/footshop/"
         },
+        "lang": {
+            label: 'CS',
+            url: '/cs/'
+        }
     }
 }

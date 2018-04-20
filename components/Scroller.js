@@ -30,14 +30,14 @@ class Scroller extends Component {
     }
 
     _activateScrollListening() {
-        if (typeof window != 'undefined') {
+        if (this.props.store.isClient) {
             window.addEventListener('touchmove', this._handleTouch)
             window.addEventListener('wheel', this._handleScroll)
             window.addEventListener('keydown', this._handleKeyDown)
         }
     }
     _deactivateScrollListening() {
-        if (typeof window != 'undefined') {
+        if (this.props.store.isClient) {
             window.removeEventListener('touchmove', this._handleTouch)
             window.removeEventListener('wheel', this._handleScroll)
             window.removeEventListener('keydown', this._handleKeyDown)
@@ -156,9 +156,9 @@ class Scroller extends Component {
     }
 
     render() {
-        const {children, store: {active, isMobile}} = this.props
+        const {children, store: {active, isClient, isMobile}} = this.props
 
-        if (typeof window != 'undefined') {
+        if (isClient) {
             this._setScrolling(!isMobile)
             this.slideTo(active)
         }
