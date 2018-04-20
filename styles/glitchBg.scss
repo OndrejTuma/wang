@@ -30,6 +30,16 @@ $blend-color-5: #af4949;
     overflow: hidden;
 
     &__img {
+        position: absolute;
+        top: calc(-1 * #{$gap-vertical});
+        left: calc(-1 * #{$gap-horizontal});
+        width: calc(100% + #{$gap-horizontal} * 2);
+        height: calc(100% + #{$gap-vertical} * 2);
+        background-position: 50% 50%;
+        background-color: $blend-color-1;
+        background-size: cover;
+        transform: translate3d(0, 0, 0);
+        background-blend-mode: $blend-mode-1;
 
         .Slide1 & { @include background-image('mobile/youtube.jpg'); }
         .Slide2 .slide-0 & { @include background-image('mobile/slide-0.jpg'); }
@@ -52,53 +62,47 @@ $blend-color-5: #af4949;
             .Slide2 .slide-6 & { @include background-image('slide-6.jpg'); }
             .Slide3 & { @include background-image('collection.jpg'); }
         }
-
-        position: absolute;
-        top: calc(-1 * #{$gap-vertical});
-        left: calc(-1 * #{$gap-horizontal});
-        width: calc(100% + #{$gap-horizontal} * 2);
-        height: calc(100% + #{$gap-vertical} * 2);
-        background-position: 50% 50%;
-        background-color: $blend-color-1;
-        background-size: cover;
-        transform: translate3d(0,0,0);
-        background-blend-mode: $blend-mode-1;
     }
 
-    &__img:nth-child(n+2) {
-        opacity: 0;
+    .Slide1.active &,
+    .Slide2.active .slide.active &,
+    .Slide3.active & {
+        &__img:nth-child(n+2) {
+            opacity: 0;
+        }
+
+        &__img:nth-child(n+2) {
+            animation-duration: $time-anim;
+            animation-delay: $delay-anim;
+            animation-timing-function: linear;
+            animation-iteration-count: 2;
+        }
+
+        &__img:nth-child(2) {
+            background-color: $blend-color-2;
+            background-blend-mode: $blend-mode-2;
+            animation-name: glitch-anim-1;
+        }
+
+        &__img:nth-child(3) {
+            background-color: $blend-color-3;
+            background-blend-mode: $blend-mode-3;
+            animation-name: glitch-anim-2;
+        }
+
+        &__img:nth-child(4) {
+            background-color: $blend-color-4;
+            background-blend-mode: $blend-mode-4;
+            animation-name: glitch-anim-3;
+        }
+
+        &__img:nth-child(5) {
+            background-color: $blend-color-5;
+            background-blend-mode: $blend-mode-5;
+            animation-name: glitch-anim-flash;
+        }
     }
 
-    &__img:nth-child(n+2) {
-        animation-duration: $time-anim;
-        animation-delay: $delay-anim;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-    }
-
-    &__img:nth-child(2) {
-        background-color: $blend-color-2;
-        background-blend-mode: $blend-mode-2;
-        animation-name: glitch-anim-1;
-    }
-
-    &__img:nth-child(3) {
-        background-color: $blend-color-3;
-        background-blend-mode: $blend-mode-3;
-        animation-name: glitch-anim-2;
-    }
-
-    &__img:nth-child(4) {
-        background-color: $blend-color-4;
-        background-blend-mode: $blend-mode-4;
-        animation-name: glitch-anim-3;
-    }
-
-    &__img:nth-child(5) {
-        background-color: $blend-color-5;
-        background-blend-mode: $blend-mode-5;
-        animation-name: glitch-anim-flash;
-    }   
 }
 
 /* Animations */
@@ -106,7 +110,7 @@ $blend-color-5: #af4949;
 @keyframes glitch-anim-1 {
     0% {
         opacity: 1;
-        transform: translate3d($gap-horizontal,0,0);
+        transform: translate3d($gap-horizontal, 0, 0);
         -webkit-clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
         clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
     }
@@ -152,11 +156,11 @@ $blend-color-5: #af4949;
     }
     21.9% {
         opacity: 1;
-        transform: translate3d($gap-horizontal,0,0);
+        transform: translate3d($gap-horizontal, 0, 0);
     }
     22%, 100% {
         opacity: 0;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
         -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     }
@@ -165,7 +169,7 @@ $blend-color-5: #af4949;
 @keyframes glitch-anim-2 {
     0% {
         opacity: 1;
-        transform: translate3d(calc(-1 * #{$gap-horizontal}),0,0);
+        transform: translate3d(calc(-1 * #{$gap-horizontal}), 0, 0);
         -webkit-clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
         clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
     }
@@ -211,11 +215,11 @@ $blend-color-5: #af4949;
     }
     21.9% {
         opacity: 1;
-        transform: translate3d(calc(-1 * #{$gap-horizontal}),0,0);
+        transform: translate3d(calc(-1 * #{$gap-horizontal}), 0, 0);
     }
     22%, 100% {
         opacity: 0;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
         -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     }
@@ -224,7 +228,7 @@ $blend-color-5: #af4949;
 @keyframes glitch-anim-3 {
     0% {
         opacity: 1;
-        transform: translate3d(0, calc(-1 * #{$gap-vertical}), 0) scale3d(-1,-1,1);
+        transform: translate3d(0, calc(-1 * #{$gap-vertical}), 0) scale3d(-1, -1, 1);
         -webkit-clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
         clip-path: polygon(0 1%, 100% 1%, 100% 3%, 0 3%);
     }
@@ -302,11 +306,11 @@ $blend-color-5: #af4949;
     }
     21.9% {
         opacity: 1;
-        transform: translate3d(0, calc(-1 * #{$gap-vertical}), 0) scale3d(-1,-1,1);
+        transform: translate3d(0, calc(-1 * #{$gap-vertical}), 0) scale3d(-1, -1, 1);
     }
     22%, 100% {
         opacity: 0;
-        transform: translate3d(0,0,0);
+        transform: translate3d(0, 0, 0);
         -webkit-clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         clip-path: polygon(0 0, 0 0, 0 0, 0 0);
     }

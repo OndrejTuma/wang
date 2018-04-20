@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import classNames from 'classnames'
+import {inject, observer} from 'mobx-react'
 
 import {trans} from '../state/Translate'
 
@@ -36,9 +38,12 @@ const slides = [
     },
 ]
 
+@inject('store') @observer
 class Slide2 extends Component {
     render() {
-        return <div className={'Slide Slide2'}>
+        const {store: {active}} = this.props
+
+        return <div className={classNames('Slide Slide2', {active: active === 1})}>
             <HorizontalSliderWithControls>
                 {slides.map(({heading, text}, i) => <div key={i}>
                     <h2>

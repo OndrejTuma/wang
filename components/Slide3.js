@@ -110,7 +110,7 @@ class Slide3 extends Component {
     }
 
     render() {
-        const {store: {show_collection}} = this.props
+        const {store: {active, show_collection}} = this.props
         const {slide3: {drop, hide, show, text}, common: {buy, buyLink}} = trans.key
 
         if (show_collection) {
@@ -120,7 +120,7 @@ class Slide3 extends Component {
             this._contract(this.content_id)
         }
 
-        return <div className={classNames('Slide Slide3', {expanded: show_collection})}>
+        return <div className={classNames('Slide Slide3', {expanded: show_collection, active: active === 2})}>
             <GlitchBg/>
             <div className={`content`} id={this.content_id}>
                 {show_collection

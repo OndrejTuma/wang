@@ -13,6 +13,7 @@ import Scroller from '../components/Scroller'
 import SocialWrapper from '../components/SocialWrapper'
 import Disclaimer from '../components/Disclaimer'
 import Controls from '../components/Controls'
+import GoogleTagManager from '../components/GoogleTagManager'
 
 @inject('store') @observer
 class Index extends Component {
@@ -50,6 +51,7 @@ class Index extends Component {
                 <link rel="stylesheet" href="https://use.typekit.net/mqa6irl.css"/>
                 <style type="text/css">{css}</style>
             </Head>
+            <GoogleTagManager gtmId={`GTM-5LTVTK2`} />
             <SocialWrapper/>
             <Controls/>
             <Scroller onScroll={!isMobile}>

@@ -23,7 +23,7 @@ class HorizontalSliderWithControls extends Component {
                 const currentSlide = this._getTwoDigitsFormat(i + 1)
                 const totalSlides = this._getTwoDigitsFormat(children.length)
 
-                return <div key={i} className={`slide slide-${i}`}>
+                return <div key={i} className={classNames('slide', `slide-${i}`, {active: store.horizontalActive === i})}>
                     <GlitchBg/>
                     <div className={`content`}>
                         <div>
