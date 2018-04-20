@@ -8,6 +8,7 @@ module.exports = {
             '/': {page: '/'},
         }
     },
+    assetPrefix: `/${process.env.LANG}`,
     webpack: (config, {dev}) => {
         config.module.rules.push(
             {
