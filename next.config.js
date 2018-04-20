@@ -10,7 +10,9 @@ module.exports = {
             '/': {page: '/'},
         }
     },
-    assetPrefix: `/${process.env.LANG}`,
+    assetPrefix: process.env.NODE_ENV == 'production'
+        ? `/${process.env.LANG}`
+        : '',
     webpack: (config, {dev}) => {
         config.module.rules.push(
             {
@@ -19,6 +21,9 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                         options: {
+                            data: process.env.NODE_ENV == 'production'
+                                ? `$assetsRoot: "static/";`
+                                : `$assetsRoot: "../../static/";`,
                             includePaths: ['styles', 'node_modules']
                                 .map((d) => path.join(__dirname, d))
                                 .map((g) => glob.sync(g))

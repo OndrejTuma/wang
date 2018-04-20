@@ -4,10 +4,10 @@
   "description": "Promo site Alexander Wang for Footshop",
   "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
     "build": "yarn build:cs && yarn build:en",
-    "build:cs": "cross-env LANG=cs next build && cross-env LANG=cs next export -o out/cs",
-    "build:en": "cross-env LANG=en next build && cross-env LANG=en next export -o out/en",
+    "build:cs": "cross-env NDOE_ENV=production LANG=cs next build && cross-env LANG=cs next export -o out/cs",
+    "build:en": "cross-env NDOE_ENV=production LANG=en next build && cross-env LANG=en next export -o out/en",
     "start": "NODE_ENV=production node server.js"
   },
   "repository": {
