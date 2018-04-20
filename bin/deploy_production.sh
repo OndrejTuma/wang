@@ -3,5 +3,5 @@
 cd /home/web/wang.footshop.cz
 git fetch
 git checkout $1
-yarn install
-yarn build
+/home/web/npm/bin/yarn install
+/home/web/npm/bin/yarn build
