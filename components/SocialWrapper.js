@@ -6,9 +6,9 @@ import TwitterSVG from '../static/svg/twitter.svg'
 import InstagramSVG from '../static/svg/instagram.svg'
 
 const social_networks = [
-    {translation_key: 'facebook', icon: <FacebookSVG width={16} height={16} />},
-    {translation_key: 'twitter', icon: <TwitterSVG width={16} height={16} />},
-    {translation_key: 'instagram', icon: <InstagramSVG width={16} height={16} />},
+    {translation_key: 'facebook', icon: <FacebookSVG width={16} height={16} />, target: '_blank'},
+    {translation_key: 'twitter', icon: <TwitterSVG width={16} height={16} />, target: '_blank'},
+    {translation_key: 'instagram', icon: <InstagramSVG width={16} height={16} />, target: '_blank'},
     {translation_key: 'lang'},
 ]
 

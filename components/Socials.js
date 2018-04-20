@@ -7,7 +7,7 @@ export default ({socials}) => <div className={`Socials`}>
                 const {label, url} = trans.key.socials[social.translation_key]
 
                 return <li key={i}>
-                    <a href={url()} title={label()} target={`_blank`}>{social.icon || label()}</a>
+                    <a href={url()} title={label()} target={social.target}>{social.icon || label()}</a>
                 </li>
             }
         )}
