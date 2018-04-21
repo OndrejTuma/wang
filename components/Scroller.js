@@ -7,7 +7,7 @@ class Scroller extends Component {
     config = {
         distance: .1    //toleration for scroller to move to prev/next (vh)
     }
-    animating = false
+    scrolling = false
     slides = []
     scrollerSettings = {
         duration: 1000,
@@ -45,6 +45,10 @@ class Scroller extends Component {
     _handleScroll = e => {
         e.preventDefault()
 
+        if (this.scrolling) {
+            return
+        }
+        //TODO: tolerance
         e.deltaY > 0
             ? this.next()
             : this.prev()
@@ -78,10 +82,10 @@ class Scroller extends Component {
         }
     }
     _scrollEnded = () => {
-        this.animating = false
+        this.scrolling = false
     }
     _scrollStarted = () => {
-        this.animating = true
+        this.scrolling = true
     }
 
     /**
