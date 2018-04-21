@@ -4,7 +4,11 @@ import {inject, observer} from 'mobx-react'
 
 @inject('store') @observer
 class Scroller extends Component {
-    scrollEventInit = false
+    config = {
+        distance: .1    //toleration for scroller to move to prev/next (vh)
+    }
+    animating = false
+    slides = []
     scrollerSettings = {
         duration: 1000,
         ignoreCancelEvents: true,
@@ -18,31 +22,6 @@ class Scroller extends Component {
         return children ? children.length : 0
     }
 
-    componentDidMount() {
-        Events.scrollEvent.register('begin', this._handleScrollStart)
-        Events.scrollEvent.register('end', this._handleScrollEnd)
-
-        scrollSpy.update()
-    }
-    componentWillUnmount() {
-        Events.scrollEvent.remove('begin')
-        Events.scrollEvent.remove('end')
-    }
-
-    _activateScrollListening() {
-        if (this.props.store.isClient) {
-            window.addEventListener('touchmove', this._handleTouch)
-            window.addEventListener('wheel', this._handleScroll)
-            window.addEventListener('keydown', this._handleKeyDown)
-        }
-    }
-    _deactivateScrollListening() {
-        if (this.props.store.isClient) {
-            window.removeEventListener('touchmove', this._handleTouch)
-            window.removeEventListener('wheel', this._handleScroll)
-            window.removeEventListener('keydown', this._handleKeyDown)
-        }
-    }
     _handleKeyDown = e => {
         let keyCode = e.keyCode
 
@@ -65,36 +44,44 @@ class Scroller extends Component {
     }
     _handleScroll = e => {
         e.preventDefault()
-        let scrollDown = e.deltaY > 0
 
-        scrollDown ? this.next() : this.prev()
+        e.deltaY > 0
+            ? this.next()
+            : this.prev()
     }
-    _handleScrollEnd = () => {
-        if (this.scrollEventInit) {
-            this._activateScrollListening()
-            this.lastTouchY = null
-        }
-    }
-    _handleScrollStart = () => {
-        if (this.scrollEventInit) {
-            this._deactivateScrollListening()
-        }
-    }
-    _handleTouch = e => {
-        e.preventDefault()
-        if (!e.touches.length) {
+    _handleTouchMove = e => {
+        const {store: {active, isMobile, viewport_height}} = this.props
+
+        if (!isMobile || !e.touches || !e.touches.length) {
             return
         }
 
-        let touch = e.touches[0]
+        const {clientY} = e.touches[0]
+        let is_scrolling_down = true
 
         if (this.lastTouchY) {
-            this.lastTouchY > touch.clientY
-                ? this.next()
-                : this.prev()
+            is_scrolling_down = this.lastTouchY > clientY
         }
+        this.lastTouchY = clientY
 
-        this.lastTouchY = touch.clientY
+        const {offsetTop} = this.slides[active]
+        const scroll_top = window.scrollY || window.pageYOffset
+        const tolerance = Math.round(viewport_height * this.config.distance)
+
+        // next slide
+        if (is_scrolling_down && offsetTop < scroll_top - tolerance) {
+            this.next()
+        }
+        // prev slide
+        if (is_scrolling_down === false && offsetTop > scroll_top + tolerance) {
+            this.prev()
+        }
+    }
+    _scrollEnded = () => {
+        this.animating = false
+    }
+    _scrollStarted = () => {
+        this.animating = true
     }
 
     /**
@@ -105,22 +92,10 @@ class Scroller extends Component {
         const {store: {active}} = this.props
 
         if (slide === active) {
-
             return
         }
 
         this.props.store.setActive(slide)
-    }
-    _setScrolling(value) {
-        if (
-            (value && this.scrollEventInit) ||
-            (!value && !this.scrollEventInit)
-        ) { return }
-
-        this.scrollEventInit = value
-        value
-            ? this._activateScrollListening()
-            : this._deactivateScrollListening()
     }
 
     /**
@@ -155,16 +130,40 @@ class Scroller extends Component {
         )
     }
 
+    componentDidMount() {
+        if (this.props.store.isClient) {
+            window.addEventListener('touchmove', this._handleTouchMove)
+            window.addEventListener('wheel', this._handleScroll)
+            window.addEventListener('keydown', this._handleKeyDown)
+
+            Events.scrollEvent.register('begin', this._scrollStarted)
+            Events.scrollEvent.register('end', this._scrollEnded)
+
+            scrollSpy.update()
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.props.store.isClient) {
+            window.removeEventListener('touchmove', this._handleTouchMove)
+            window.removeEventListener('wheel', this._handleScroll)
+            window.removeEventListener('keydown', this._handleKeyDown)
+
+            Events.scrollEvent.remove('begin')
+            Events.scrollEvent.remove('end')
+        }
+    }
+
     render() {
-        const {children, store: {active, isClient, isMobile}} = this.props
+        const {children, store: {active, isClient}} = this.props
 
         if (isClient) {
-            this._setScrolling(!isMobile)
             this.slideTo(active)
         }
 
         return <div className={`Scroller`}>
-            {children.map((child, i) => <div key={i} id={this.classPrefix + i}>{child}</div>)}
+            {children.map((child, i) => <div ref={elm => this.slides.push(elm)} key={i}
+                                             id={this.classPrefix + i}>{child}</div>)}
         </div>
     }
 }

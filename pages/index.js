@@ -18,25 +18,27 @@ import GoogleTagManager from '../components/GoogleTagManager'
 
 @inject('store') @observer
 class Index extends Component {
+    _handleResize = e => {
+        this.props.store.setViewportWidth(
+            Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+        )
+        this.props.store.setViewportHeight(
+            Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+        )
+    }
+
     componentDidMount() {
-        if (typeof window != 'undefined') {
+        if (this.props.store.isClient) {
             this._handleResize()
 
             window.addEventListener('resize', this._handleResize)
         }
     }
     componentWillUnmount() {
-        if (typeof window != 'undefined') {
+        if (this.props.store.isClient) {
             window.removeEventListener('resize', this._handleResize)
         }
     }
-
-    _handleResize = e => {
-        this.props.store.setViewportWidth(
-            Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-        )
-    }
-
     render() {
         const {store: {isMobile}} = this.props
         const {header: {title}, og: {fbLink}} = trans.key

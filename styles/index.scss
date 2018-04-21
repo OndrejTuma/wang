@@ -31,7 +31,7 @@
 
 // css libraries
 //@import "_libs/normalize.css";
-@import "_libs/bootstrap";
+//@import "_libs/bootstrap";
 
 // layout styles
 @import "layout/headings";
@@ -58,9 +58,9 @@
 // common styles
 @import "_common/globals";
 @import "_common/_colors";
-@import "_common/_presets";
+//@import "_common/_presets";
 
 // glitch
-@import "glitch";
+//@import "glitch";
 @import "glitchBg";
 @import "glitchText";
