@@ -4,8 +4,8 @@ export class Store {
     mobile_breakpoint = 768
     @observable viewport_width = 0
     @observable viewport_height = 0
-    @observable active = 0
-    @observable horizontalActive = 0
+    @observable active = 0              //slide
+    @observable horizontalActive = 0    //horizontal slide
     @observable show_collection = false
 
     get isClient() {

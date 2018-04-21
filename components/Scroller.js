@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {Events, scroller, scrollSpy} from 'react-scroll'
 import {inject, observer} from 'mobx-react'
 
+import {scrollerSettings} from '../config'
+
 @inject('store') @observer
 class Scroller extends Component {
     config = {
@@ -9,11 +11,7 @@ class Scroller extends Component {
     }
     scrolling = false
     slides = []
-    scrollerSettings = {
-        duration: 1000,
-        ignoreCancelEvents: true,
-        smooth: true,
-    }
+
     classPrefix = 'Scroller-slide-'
 
     get slidesCount() {
@@ -124,14 +122,16 @@ class Scroller extends Component {
     /**
      * Scrolls to given slide on client
      * @param {int} slide
-     * @param {Object.<string, string>} scrollerSettings
      * @private
      */
-    slideTo(slide, scrollerSettings = {}) {
-        scroller.scrollTo(
-            this.classPrefix + slide,
-            Object.assign(this.scrollerSettings, scrollerSettings)
-        )
+    slideTo(slide) {
+        const {store: {isMobile}} = this.props
+
+        if (isMobile) {
+            return
+        }
+
+        scroller.scrollTo(this.classPrefix + slide, scrollerSettings)
     }
 
     componentDidMount() {

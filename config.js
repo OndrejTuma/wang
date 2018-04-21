@@ -8,3 +8,9 @@ export const devices = [
         name: 'mobile'
     }
 ]
+
+export const scrollerSettings = {
+    duration: 1000,
+    ignoreCancelEvents: true,
+    smooth: true,
+}

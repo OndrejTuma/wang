@@ -5,12 +5,12 @@ class SnapText extends Component {
         text: ''
     }
     possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}"
-    character_animation_length = 40
+    character_animation_delay = 50
     timeouts = []
 
     _setTimeout(i, text) {
         this.timeouts.push(
-            setTimeout(() => this._tick(text), i * this.character_animation_length)
+            setTimeout(() => this._tick(text), i * this.character_animation_delay)
         )
     }
     _tick(text) {

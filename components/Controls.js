@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {animateScroll} from 'react-scroll'
 import {inject, observer} from 'mobx-react'
 
 import SnapText from './SnapText'
@@ -48,6 +49,8 @@ class Controls extends Component {
 
         this.props.store.setActive(2)
         this.props.store.showCollection()
+        //TODO: come up with better solution
+        animateScroll.scrollToBottom()
     }
 
     render() {
