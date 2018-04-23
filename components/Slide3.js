@@ -3,6 +3,7 @@ import {inject, observer} from 'mobx-react'
 import {TweenLite} from 'gsap'
 import classNames from 'classnames'
 
+import SnapText from './SnapText'
 import {trans} from '../state/Translate'
 
 import Carousel from './Carousel'
@@ -113,6 +114,14 @@ class Slide3 extends Component {
         const {store: {active, show_collection}} = this.props
         const {slide3: {drop, hide, show, text}, common: {buy, buyLink}} = trans.key
 
+        let Show = ''
+        if (active === 2) {
+            Show = <SnapText text={show()} delay={1000} duration={1000}/>
+        }
+        else {
+            Show = show()
+        }
+
         if (show_collection) {
             this._expand(this.content_id)
         }
@@ -138,7 +147,7 @@ class Slide3 extends Component {
                         <p>{text()}</p>
 
                         <div className={`cta`}>
-                            <a href="#" onClick={this._show}>{show()}</a>
+                            <a href="#" onClick={this._show}>{Show}</a>
                         </div>
                     </div>
                 }
