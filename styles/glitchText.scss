@@ -2,7 +2,7 @@ $gap-horizontal: 10px;
 $time-anim: 4s;
 
 .glitchText {
-    .slide.active & {
+    .Slide2.active .slide.active & {
         animation-name: glitch-anim-text;
         animation-duration: $time-anim;
         animation-timing-function: linear;
