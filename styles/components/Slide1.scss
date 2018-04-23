@@ -8,14 +8,20 @@
         top: 0;
     }
 
-    .content svg {
-        fill: $white;
-        height: auto;
-        left: 50%;
-        max-width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    .content {
+        align-items: center;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        text-align: center;
+
+        .child {
+            width: 100%;
+        }
+
+        svg {
+            fill: $white;
+        }
     }
     .youtube {
         bottom: 0;

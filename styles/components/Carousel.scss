@@ -14,8 +14,10 @@
 
         &:before {
             cursor: pointer;
+            display: block;
             font-size: 70px;
             line-height: 1;
+            width: 30px;
         }
     }
     .slick-prev {

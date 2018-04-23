@@ -14,3 +14,5 @@ export const scrollerSettings = {
     ignoreCancelEvents: true,
     smooth: true,
 }
+
+export const fbAppId = 2109258462637117

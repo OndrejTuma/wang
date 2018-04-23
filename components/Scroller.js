@@ -7,7 +7,7 @@ import {scrollerSettings} from '../config'
 @inject('store') @observer
 class Scroller extends Component {
     config = {
-        distance: .1    //toleration for scroller to move to prev/next (vh)
+        distance: .3    //toleration for scroller to move to prev/next (vh)
     }
     scrolling = false
     slides = []

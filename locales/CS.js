@@ -10,6 +10,7 @@ export default {
         "buy": "Nakoupit na Footshopu",
         "collection": "Kolekce",
         "buyLink": "https://www.footshop.cz/cs/1517-adidas-originals-by-alexander-wang/",
+        "fsLink": "https://www.footshop.cz/cs/",
     },
     horizontalSlider: {
         "prev": "předchozí",
