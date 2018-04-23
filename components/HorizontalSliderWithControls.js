@@ -16,13 +16,16 @@ class HorizontalSliderWithControls extends Component {
     _getTwoDigitsFormat(number) {
         return number > 9 ? number : `0${number}`
     }
+
     render() {
         const {children, store} = this.props
+        const {next, prev} = trans.key.horizontalSlider
 
         return <HorizontalSlider className={`HorizontalSliderWithControls`}>
             {children.map((slide, i) => {
                 const currentSlide = this._getTwoDigitsFormat(i + 1)
                 const totalSlides = this._getTwoDigitsFormat(children.length)
+                const isActive = store.active === 1 && store.horizontalActive === i
 
                 return <div key={i} className={classNames('slide', `slide-${i}`, {active: store.horizontalActive === i})}>
                     <GlitchBg/>
@@ -30,7 +33,28 @@ class HorizontalSliderWithControls extends Component {
                         <div>
                             <p className={`annotation`}>{`${currentSlide} - ${totalSlides}`}</p>
                             {slide}
-                            <SlideControl store={store} position={i} length={children.length}/>
+                            <div className={`controls`}>
+                                <p
+                                    className={classNames('left', {disabled: i === 0})}
+                                    onClick={e => i > 0 && store.setHorizontalActive(i - 1)}
+                                >
+                                    {!store.isMobile && <ArrowLeft width={50} height={30}/>}
+                                    {isActive
+                                        ? <SnapText delay={1000} duration={1000} text={prev()}/>
+                                        : prev()
+                                    }
+                                </p>
+                                <p
+                                    className={classNames('right', {disabled: i === children.length - 1})}
+                                    onClick={e => i < children.length - 1 && store.setHorizontalActive(i + 1)}
+                                >
+                                    {isActive
+                                        ? <SnapText delay={1000} duration={1000} text={next()}/>
+                                        : next()
+                                    }
+                                    {!store.isMobile && <ArrowRight width={50} height={30}/>}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,33 +62,5 @@ class HorizontalSliderWithControls extends Component {
         </HorizontalSlider>
     }
 }
-
-const SlideControl = ({position, length, store}) => {
-    const {next, prev} = trans.key.horizontalSlider
-
-    let Prev = prev()
-    let Next = next()
-
-    if (store.active === 1 && store.horizontalActive === position) {
-        Prev = <SnapText delay={1000} duration={1000} text={prev()}/>
-        Next = <SnapText delay={1000} duration={1000} text={next()}/>
-    }
-
-    return <div className={`controls`}>
-        <p
-            className={classNames('left', {disabled: position === 0})}
-            onClick={e => position > 0 && store.setHorizontalActive(position - 1)}
-        >
-            {!store.isMobile && <ArrowLeft width={50} height={30}/>} {Prev}
-        </p>
-        <p
-            className={classNames('right', {disabled: position === length - 1})}
-            onClick={e => position < length - 1 && store.setHorizontalActive(position + 1)}
-        >
-            {Next} {!store.isMobile && <ArrowRight width={50} height={30}/>}
-        </p>
-    </div>
-}
-
 
 export default HorizontalSliderWithControls

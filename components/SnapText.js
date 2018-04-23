@@ -73,9 +73,10 @@ class SnapText extends Component {
         }
 
         this.setState({text})
-        setTimeout(() => this.runSnap(duration), delay || 0)
+        this.initialTimeout = setTimeout(() => this.runSnap(duration), delay || 0)
     }
     componentWillUnmount() {
+        clearTimeout(this.initialTimeout)
         this.timeouts.map(timeout => clearTimeout(timeout))
     }
     render() {
