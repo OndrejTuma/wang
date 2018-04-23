@@ -5,12 +5,12 @@ class SnapText extends Component {
         text: ''
     }
     possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}"
-    character_animation_delay = 50
+    char_animation_length = 50
     timeouts = []
 
-    _setTimeout(i, text) {
+    _setTimeout(text, delay) {
         this.timeouts.push(
-            setTimeout(() => this._tick(text), i * this.character_animation_delay)
+            setTimeout(() => this._tick(text), delay)
         )
     }
     _tick(text) {
@@ -24,43 +24,62 @@ class SnapText extends Component {
             return
         }
 
-        const {text} = this.props
-
-        this.runSnap(text)
+        this.runSnap()
     }
     /**
      * Scrolling letter functionality
      * Snaps text with possible characters
-     * @param {string} text
+     * @param {int} duration - in ms
      * @param {string} possible
      */
-    runSnap(text, possible = this.possible) {
+    runSnap(duration, possible = this.possible) {
+        const {text} = this.state
         let textRandom = ''
 
-        for (let i = 0; i < text.length + 1; i++) {
-            textRandom = text.substr(0, i)
+        const ratio = duration
+            ? Math.round(duration / (text.length * this.char_animation_length))
+            : 1
 
-            for (var j = i; j < text.length; j++) {
+        const cycles = ratio > 1
+            ? ratio * text.length
+            : text.length
+
+        for (let i = 0; i <= cycles; i++) {
+            let resolvedLetters = 0
+
+            if (i > 0) {
+                resolvedLetters = ratio > 1
+                    ? Math.ceil(i / ratio)
+                    : i
+            }
+
+            textRandom = text.substr(0, resolvedLetters)
+
+            for (var j = resolvedLetters; j < text.length; j++) {
                 textRandom += possible.charAt(Math.floor(Math.random() * possible.length))
             }
 
-            this._setTimeout(i, textRandom)
+            this._setTimeout(textRandom, i * this.char_animation_length)
 
             textRandom = ''
         }
     }
 
     componentDidMount() {
-        const {text} = this.props
+        const {text, delay, duration} = this.props
 
         if (!text) {
             return
         }
 
         this.setState({text})
+        setTimeout(() => this.runSnap(duration), delay || 0)
+    }
+    componentWillUnmount() {
+        this.timeouts.map(timeout => clearTimeout(timeout))
     }
     render() {
-        return <span className={`SnapText`} onMouseEnter={this.onHover}>{this.state.text}</span>
+        return <span className={`SnapText`}>{this.state.text}</span>
     }
 }
 

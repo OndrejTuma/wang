@@ -8,6 +8,7 @@ import ArrowLeft from '../static/svg/arrow-left.svg'
 import ArrowRight from '../static/svg/arrow-right.svg'
 
 import HorizontalSlider from './HorizontalSlider'
+import SnapText from './SnapText'
 import GlitchBg from './GlitchBg'
 
 @inject('store') @observer
@@ -41,18 +42,26 @@ class HorizontalSliderWithControls extends Component {
 const SlideControl = ({position, length, store}) => {
     const {next, prev} = trans.key.horizontalSlider
 
+    let Prev = prev()
+    let Next = next()
+
+    if (store.active === 1 && store.horizontalActive === position) {
+        Prev = <SnapText delay={1000} duration={1000} text={prev()}/>
+        Next = <SnapText delay={1000} duration={1000} text={next()}/>
+    }
+
     return <div className={`controls`}>
         <p
             className={classNames('left', {disabled: position === 0})}
             onClick={e => position > 0 && store.setHorizontalActive(position - 1)}
         >
-            {!store.isMobile && <ArrowLeft width={50} height={30}/>} {prev()}
+            {!store.isMobile && <ArrowLeft width={50} height={30}/>} {Prev}
         </p>
         <p
             className={classNames('right', {disabled: position === length - 1})}
             onClick={e => position < length - 1 && store.setHorizontalActive(position + 1)}
         >
-            {next()} {!store.isMobile && <ArrowRight width={50} height={30}/>}
+            {Next} {!store.isMobile && <ArrowRight width={50} height={30}/>}
         </p>
     </div>
 }

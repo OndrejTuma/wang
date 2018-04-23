@@ -15,19 +15,24 @@ const {fbLink} = trans.key.og
 import Dot from '../static/svg/dot-single.svg'
 import Triangle from '../static/svg/triangle-right.svg'
 
+const animation = {
+    delay: 400,
+    duration: 1500,
+}
+
 @inject('store') @observer
 class Controls extends Component {
     get Buy() {
         return <div className={'buy'}>
             <a href={buyLink()}>
-                <Triangle width={15} height={15}/> <SnapText text={buy()}/>
+                <Triangle width={15} height={15}/> <SnapText delay={2 * animation.delay} duration={animation.duration} text={buy()}/>
             </a>
         </div>
     }
     get Collection() {
         return <div className={'collection'}>
             <a href="#collection" onClick={this._collectionClick}>
-                <Triangle width={15} height={15}/> <SnapText text={collection()}/>
+                <Triangle width={15} height={15}/> <SnapText delay={4 * animation.delay} duration={animation.duration} text={collection()}/>
             </a>
         </div>
     }
@@ -43,16 +48,15 @@ class Controls extends Component {
     }
     get Home() {
         return <div className={'home'} onClick={e => this.props.store.setActive(0)}>
-            <Dot width={15} height={15}/> <SnapText text={home()}/>
+            <Dot width={15} height={15}/> <SnapText delay={animation.delay} duration={animation.duration} text={home()}/>
         </div>
     }
     get Time() {
         return <div className={'time'}>
             <Timer/>
-            <i><SnapText text={'A AW 004 S18'}/></i>
+            <i><SnapText delay={3 * animation.delay} duration={animation.duration} text={'A AW 004 S18'}/></i>
         </div>
     }
-
 
     _collectionClick = e => {
         e.preventDefault()
