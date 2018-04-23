@@ -108,6 +108,10 @@ class Scroller extends Component {
         const slides = this.slidesCount - 1
 
         this._setActive(active < slides ? active + 1 : slides)
+console.log();
+        if (active === slides) {
+            this.props.store.showCollection()
+        }
     }
 
     /**

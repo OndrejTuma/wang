@@ -114,11 +114,17 @@ class Slide3 extends Component {
         const {store: {active, show_collection}} = this.props
         const {slide3: {drop, hide, show, text}, common: {buy, buyLink}} = trans.key
 
+        let Buy = ''
         let Show = ''
         if (active === 2) {
             Show = <SnapText text={show()} delay={1000} duration={1000}/>
+
+            if (show_collection) {
+                Buy = <SnapText text={buy()} delay={1000} duration={1000}/>
+            }
         }
         else {
+            Buy = buy()
             Show = show()
         }
 
@@ -138,7 +144,7 @@ class Slide3 extends Component {
                         <Carousel/>
                         <div className={`cta`}>
                             <a href="#" onClick={this._hide}>{hide()}</a>
-                            <a href={buyLink()}>{buy()}</a>
+                            <a href={buyLink()}>{Buy}</a>
                             <Logo width={300} height={80}/>
                         </div>
                     </div>

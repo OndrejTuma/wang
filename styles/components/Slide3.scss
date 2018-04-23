@@ -45,9 +45,6 @@
     }
 
     @include media(phablet) {
-        .collection {
-            width: 70%;
-        }
         .cta {
             margin-top: 50px;
         }
@@ -61,6 +58,11 @@
         }
     }
     @include media(desktop) {
+        .slick-slider {
+            width: 800px;
+        }
+    }
+    @include media(desktop-large) {
         .slick-slider {
             width: 1000px;
         }
