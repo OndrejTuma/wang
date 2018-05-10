@@ -108,6 +108,10 @@ class Scroller extends Component {
         const slides = this.slidesCount - 1
 
         this._setActive(active < slides ? active + 1 : slides)
+
+        if (active === slides) {
+            this.props.store.showCollection()
+        }
     }
 
     /**
@@ -135,27 +139,23 @@ class Scroller extends Component {
     }
 
     componentDidMount() {
-        if (this.props.store.isClient) {
-            window.addEventListener('touchmove', this._handleTouchMove)
-            window.addEventListener('wheel', this._handleScroll)
-            window.addEventListener('keydown', this._handleKeyDown)
+        window.addEventListener('touchmove', this._handleTouchMove)
+        window.addEventListener('wheel', this._handleScroll)
+        window.addEventListener('keydown', this._handleKeyDown)
 
-            Events.scrollEvent.register('begin', this._scrollStarted)
-            Events.scrollEvent.register('end', this._scrollEnded)
+        Events.scrollEvent.register('begin', this._scrollStarted)
+        Events.scrollEvent.register('end', this._scrollEnded)
 
-            scrollSpy.update()
-        }
+        scrollSpy.update()
     }
 
     componentWillUnmount() {
-        if (this.props.store.isClient) {
-            window.removeEventListener('touchmove', this._handleTouchMove)
-            window.removeEventListener('wheel', this._handleScroll)
-            window.removeEventListener('keydown', this._handleKeyDown)
+        window.removeEventListener('touchmove', this._handleTouchMove)
+        window.removeEventListener('wheel', this._handleScroll)
+        window.removeEventListener('keydown', this._handleKeyDown)
 
-            Events.scrollEvent.remove('begin')
-            Events.scrollEvent.remove('end')
-        }
+        Events.scrollEvent.remove('begin')
+        Events.scrollEvent.remove('end')
     }
 
     render() {

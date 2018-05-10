@@ -10,7 +10,7 @@ export const devices = [
 ]
 
 export const scrollerSettings = {
-    duration: 1000,
+    duration: 1400,
     ignoreCancelEvents: true,
     smooth: true,
 }
