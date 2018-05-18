@@ -9,7 +9,7 @@ export default {
         "home": "Home",
         "buy": "Shop at Footshop",
         "collection": "Collection",
-        "buyLink": "https://www.footshop.eu/en/1517-adidas-originals-by-alexander-wang/",
+        "buyLink": "https://www.footshop.eu/en/223_adidas-originals-by-alexander-wang-/",
         "fsLink": "https://www.footshop.eu/en/",
     },
     horizontalSlider: {
