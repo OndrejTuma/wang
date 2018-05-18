@@ -49,8 +49,8 @@ export default {
         }
     },
     slide3: {
-        "drop": "Drop 4",
-        "text": "Všechny dropy kolekce adidas originals by AW této sezóny mají jedno společné. Jsou inspirovány prostředím továrny, světem dokonalých nedokonalostí a pracovními oděvy. DROP 4 přináší ještě více. Poukazuje na nesourodé vnímání kvality ve světě a inspiruje se pracovními uniformami, surovými základy a obecně industriálním prostředím.",
+        "drop": "S3 DROP 2",
+        "text": "Alexander Wang ve spolupráci s adidas Originals přichází s dalším dropem v rámci SEASON 3. Inspiraci opět nachází v prostředí továrny, světě dokonalých nedokonalostí a také mezi pracovními oděvy. Přináší dvě siluety tenisek a několik velmi zajímavých módních kousků.",
         "hide": "zpátky",
         "show": "ukaž kolekci"
     },

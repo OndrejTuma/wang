@@ -49,8 +49,8 @@ export default {
         }
     },
     slide3: {
-        "drop": "Drop 4",
-        "text": "This season´s drops from adidas Originals by AW have one thing in common. They are inspired by factory environment, the world of perfect imperfections and work uniforms. Drop 4 brings more than that. It points to the disparate perception of quality in the world and is inspired by work uniforms, raw bases and generally industrial environments.",
+        "drop": "S3 DROP 2",
+        "text": "Alexander Wang in collaboration with adidas Originals come with another SEASON 3 drop. Factory setting, the world of perfect imperfections and workwear are once again primary inspirations. It brings two sneaker silhouettes and a few very interesting fashion pieces.",
         "hide": "back",
         "show": "show collection"
     },

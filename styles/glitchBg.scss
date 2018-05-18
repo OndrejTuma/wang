@@ -43,24 +43,24 @@ $blend-color-5: #af4949;
         background-blend-mode: $blend-mode-1;
 
         .Slide1 & { @include background-image('mobile/youtube.jpg'); }
-        .Slide2 .slide-0 & { @include background-image('mobile/slide-0.jpg'); }
-        .Slide2 .slide-1 & { @include background-image('mobile/slide-1.jpg?new'); }
-        .Slide2 .slide-2 & { @include background-image('mobile/slide-2.jpg?new'); }
-        .Slide2 .slide-3 & { @include background-image('mobile/slide-3.jpg?new'); }
-        .Slide2 .slide-4 & { @include background-image('mobile/slide-4.jpg?new'); }
-        .Slide2 .slide-5 & { @include background-image('mobile/slide-5.jpg?new'); }
-        .Slide2 .slide-6 & { @include background-image('mobile/slide-6.jpg'); }
+        .Slide2 .slide-0 & { @include background-image('slider/mobile/1.jpg'); }
+        .Slide2 .slide-1 & { @include background-image('slider/mobile/2.jpg'); }
+        .Slide2 .slide-2 & { @include background-image('slider/mobile/3.jpg'); }
+        .Slide2 .slide-3 & { @include background-image('slider/mobile/4.jpg'); }
+        .Slide2 .slide-4 & { @include background-image('slider/mobile/5.jpg'); }
+        .Slide2 .slide-5 & { @include background-image('slider/mobile/6.jpg'); }
+        .Slide2 .slide-6 & { @include background-image('slider/mobile/7.jpg'); }
         .Slide3 & { @include background-image('mobile/collection.jpg'); }
 
         @include media(phablet) {
             .Slide1 & { background: none; }
-            .Slide2 .slide-0 & { @include background-image('slide-0.jpg'); }
-            .Slide2 .slide-1 & { @include background-image('slide-1.jpg?new'); }
-            .Slide2 .slide-2 & { @include background-image('slide-2.jpg?new'); }
-            .Slide2 .slide-3 & { @include background-image('slide-3.jpg?new'); }
-            .Slide2 .slide-4 & { @include background-image('slide-4.jpg?new'); }
-            .Slide2 .slide-5 & { @include background-image('slide-5.jpg?new'); }
-            .Slide2 .slide-6 & { @include background-image('slide-6.jpg'); }
+            .Slide2 .slide-0 & { @include background-image('slider/desktop/1.jpg'); }
+            .Slide2 .slide-1 & { @include background-image('slider/desktop/2.jpg'); }
+            .Slide2 .slide-2 & { @include background-image('slider/desktop/3.jpg'); }
+            .Slide2 .slide-3 & { @include background-image('slider/desktop/4.jpg'); }
+            .Slide2 .slide-4 & { @include background-image('slider/desktop/5.jpg'); }
+            .Slide2 .slide-5 & { @include background-image('slider/desktop/6.jpg'); }
+            .Slide2 .slide-6 & { @include background-image('slider/desktop/7.jpg'); }
             .Slide3 & { @include background-image('collection.jpg'); }
         }
     }

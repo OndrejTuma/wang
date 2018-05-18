@@ -5,34 +5,84 @@ import Lightbox from 'react-image-lightbox'
 
 const slides = [
     {
-        url: 'static/images/1.jpg',
+        url: 'static/images/products/desktop/1.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/1.jpg',
+        thumb: 'static/images/products/mobile/1.jpg',
     },
     {
-        url: 'static/images/2.jpg',
+        url: 'static/images/products/desktop/2.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/2.jpg',
+        thumb: 'static/images/products/mobile/2.jpg',
     },
     {
-        url: 'static/images/3.jpg',
+        url: 'static/images/products/desktop/3.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/3.jpg',
+        thumb: 'static/images/products/mobile/3.jpg',
     },
     {
-        url: 'static/images/4.jpg',
+        url: 'static/images/products/desktop/4.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/4.jpg',
+        thumb: 'static/images/products/mobile/4.jpg',
     },
     {
-        url: 'static/images/5.jpg',
+        url: 'static/images/products/desktop/5.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/5.jpg',
+        thumb: 'static/images/products/mobile/5.jpg',
     },
     {
-        url: 'static/images/6.jpg',
+        url: 'static/images/products/desktop/6.jpg',
         alt: 'image',
-        thumb: 'static/images/mobile/6.jpg',
+        thumb: 'static/images/products/mobile/6.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/7.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/7.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/8.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/8.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/9.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/9.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/10.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/10.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/11.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/11.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/12.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/12.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/13.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/13.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/14.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/14.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/15.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/15.jpg',
+    },
+    {
+        url: 'static/images/products/desktop/16.jpg',
+        alt: 'image',
+        thumb: 'static/images/products/mobile/16.jpg',
     },
 ]
 
