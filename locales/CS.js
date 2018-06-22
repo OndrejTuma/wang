@@ -49,8 +49,8 @@ export default {
         }
     },
     slide3: {
-        "drop": "S3 DROP 2",
-        "text": "Alexander Wang ve spolupráci s adidas Originals přichází s dalším dropem v rámci SEASON 3. Inspiraci opět nachází v prostředí továrny, světě dokonalých nedokonalostí a také mezi pracovními oděvy. Přináší dvě siluety tenisek a několik velmi zajímavých módních kousků.",
+        "drop": "S3 DROP 3",
+        "text": "Alexander Wang ve spolupráci s adidas Originals přichází s dalším dropem v rámci SEASON 3. Inspiraci opět nachází v prostředí továrny, světě dokonalých nedokonalostí a mezi nedodělanými detaily. Přináší dvě barevné kombinace tenisek, nazouváky a několik velmi zajímavých módních kousků.",
         "hide": "zpátky",
         "show": "ukaž kolekci"
     },

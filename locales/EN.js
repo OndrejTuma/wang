@@ -49,8 +49,8 @@ export default {
         }
     },
     slide3: {
-        "drop": "S3 DROP 2",
-        "text": "Alexander Wang in collaboration with adidas Originals come with another SEASON 3 drop. Factory setting, the world of perfect imperfections and workwear are once again primary inspirations. It brings two sneaker silhouettes and a few very interesting fashion pieces.",
+        "drop": "S3 DROP 3",
+        "text": "Alexander Wang in collaboration with adidas Originals come with another SEASON 3 drop. Factory setting, the world of perfect imperfections and unfinished details are once again primary inspirations. It brings two colorways of sneakers, slides and a few very interesting fashion pieces.",
         "hide": "back",
         "show": "show collection"
     },
