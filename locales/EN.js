@@ -49,8 +49,8 @@ export default {
         }
     },
     slide3: {
-        "drop": "S3 DROP 3",
-        "text": "Alexander Wang in collaboration with adidas Originals come with another SEASON 3 drop. Factory setting, the world of perfect imperfections and unfinished details are once again primary inspirations. It brings two colorways of sneakers, slides and a few very interesting fashion pieces.",
+        "drop": "S4 DROP 4",
+        "text": "Over the past three seasons, adidas Originals by Alexander Wang has established a point of view that resonated in the world of fashion and culture. This season, Alexander Wang subverts fashionís most popular approach to reuse brand archives with the progressive ideas of recycling. Rather than transforming discarded materials of no value into products of higher quality, Wang interrupts a traditional practice by using objects of iconic and material value: the collection itself.",
         "hide": "back",
         "show": "show collection"
     },
